@@ -212,6 +212,7 @@ const SubstrateContextProvider = props => {
 }
 
 const useSubstrate = () => useContext(SubstrateContext)
+
 const useSubstrateState = () =>
   useContext(SubstrateContext).state
 
