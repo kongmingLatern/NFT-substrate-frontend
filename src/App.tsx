@@ -1,5 +1,4 @@
-function App() {
-  return <>App</>
+import AccountSelector from './AccountSelector'
+export default function App() {
+  return <AccountSelector />
 }
-
-export default App
