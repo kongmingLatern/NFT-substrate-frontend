@@ -23,6 +23,11 @@ interface initialStateType {
   currentAccount: string | null
 }
 
+interface retrieveChainInfoType {
+  systemChain: string
+  systemChainType: Record<string, any>
+}
+
 // ================ initialState  =======================
 let keyringLoadAll = false
 
@@ -34,23 +39,30 @@ const parseQuery = new URLSearchParams(
   window.location.search
 )
 
+// www.xxx.com?rpc=123123&ajdoi=sdfsdf
+// [connectSocket = 123123]
 const connectedSocket =
   parseQuery.get('rpc') || config.PROVIDER_SOCKET
 
 const initialState: initialStateType = {
-  // These are the states
+  // 对应现在连接的远端
   socket: connectedSocket,
+  // `Substrate` 网络内的自定义结构组
   jsonrpc: { ...jsonrpc, ...config.CUSTOM_RPC_METHODS },
+  // 储存着用户帐号(用户公钥)，也开放出接口来为数据和交易签名
   keyring: null,
+  // 用户帐号状态，为 `[null, 'READY', 'ERROR']` 其中一个
   keyringState: null,
+  // `Polkadot-JS API`
   api: null,
   apiError: null,
+  // `Polkadot-JS API` 对远端的连接状态，为 `[null, 'CONNECTING', 'READY', 'ERROR']` 其中一个
   apiState: null,
   currentAccount: null,
 }
 
 // Reducer function for 'useReducer'
-const reducer = (state, action) => {
+const reducer = (state: initialStateType, action) => {
   switch (action.type) {
     case 'CONNECT_INIT':
       return { ...state, apiState: 'CONNECT_INIT' }
@@ -89,22 +101,24 @@ const reducer = (state, action) => {
   }
 }
 
-const connect = (state, dispatch) => {
+const connect = (
+  state: initialStateType,
+  dispatch: React.Dispatch<any>
+) => {
   const { apiState, socket, jsonrpc } = state
-  // useCallback(apiState)
-  // We only want this function to be performed once
   if (apiState) return
 
   dispatch({ type: 'CONNECT_INIT' })
 
   console.log(`Connected socket: ${socket}`)
+  // https://polkadot.js.org/docs/api/start/create
   const provider = new WsProvider(socket)
+  // rpc: User-defined RPC methods
   const _api = new ApiPromise({ provider, rpc: jsonrpc })
 
-  // Set listeners for disconnection and reconnection event.
+  // 监听状态
   _api.on('connected', () => {
     dispatch({ type: 'CONNECT', payload: _api })
-    // `ready` event is not emitted upon reconnection and is checked explicitly here.
     _api.isReady.then(_api =>
       dispatch({ type: 'CONNECT_SUCCESS' })
     )
@@ -117,7 +131,10 @@ const connect = (state, dispatch) => {
   )
 }
 // ================ Substrate Context =======================
-const retrieveChainInfo = async api => {
+// retrieveChainInfo: 检索当前连接的 Substrate 链的信息
+const retrieveChainInfo: (
+  api: any
+) => Promise<retrieveChainInfoType> = async api => {
   const [systemChain, systemChainType] = await Promise.all([
     api.rpc.system.chain(),
     api.rpc.system.chainType
@@ -134,13 +151,39 @@ const retrieveChainInfo = async api => {
 }
 
 // ================ Substrate Context Provider ====================
-const loadAccounts = (state, dispatch) => {
+const loadAccounts = (
+  state: initialStateType,
+  dispatch: React.Dispatch<any>
+) => {
   const { api } = state
   dispatch({ type: 'LOAD_KEYRING' })
 
   const asyncLoadAccounts = async () => {
     try {
+      // web3Enable(dappName: string): Promise<InjectedExtension[]>
+      // 检索所有注入的列表扩展/提供者
+      // InjectedExtension[]
+      // {
+      //   name: string
+      //   version: string,
+      //   accounts: InjectedAccounts,
+      //   metadata?: InjectedMetadata,
+      //   provider?: InjectedProvider,
+      //   signer: InjectedSigner;
+      // }[]
       await web3Enable(config.APP_NAME)
+
+      // web3Accounts(): Promise<InjectedAccountWithMeta[]>
+      // 返回一个列表的所有注入账户,横跨所有扩展元(源)码
+      // export interface InjectedAccountWithMeta {
+      //     address: string;
+      //     meta: {
+      //         genesisHash?: string | null;
+      //         name?: string;
+      //         source: string;
+      //     };
+      //     type?: KeypairType;
+      // }
       let allAccounts = await web3Accounts()
 
       allAccounts = allAccounts.map(
@@ -158,6 +201,7 @@ const loadAccounts = (state, dispatch) => {
       const isDevelopment =
         systemChainType.isDevelopment ||
         systemChainType.isLocal ||
+        // isTestChain(chain?: string | null): boolean;
         isTestChain(systemChain)
 
       Keyring.loadAll({ isDevelopment }, allAccounts)
