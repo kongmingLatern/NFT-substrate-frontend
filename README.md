@@ -114,6 +114,8 @@ useEffect(() => {
   api.query.<pallet_名字>.<pallet 存储名字>(回调函数)
 ```
 
+### JS 与 Substrate 交互
+
 对应 `pallets/template/template.rs`
 
 ```rust
@@ -125,9 +127,13 @@ decl_storage! {
 }
 ```
 
-JS API 提供两种读取数据的方法。
+`JS API` 提供两种读取数据的方法。
 
-- 一是基于 `JS Promise` 的方法，可以这样读取数值：`javascript const val = await api.query.templateModule.something();`
+- 一是基于 `JS Promise` 的方法，可以这样读取数值：
+
+```js
+const val = await api.query.templateModule.something()
+```
 
 - 另一方法，如果想收听该数值，并每次该值在远端作出变更时都收到回调，则用现在 `TemplateModule.js` 里的写法。源码：
 
@@ -146,5 +152,5 @@ api.query.templateModule
   })
 ```
 
-- 最后把取消函数在 useEffect() 内返回即可。这是 React Effect Hook 的清理方法。
-  另外值得注意一点是 something 在 Substrate 内是一个 Option<u32> 的格式。因为 Rust 和 Javascript 的数据类型没有一对一映射，因此无符号整数回到 JS 时是以封装的对象呈现。得使用跟着的 .unwrap().toNumber() 来把对象转化回 JS 内的数值。
+- 最后把取消函数在 `useEffect()` 内返回即可。这是 `React Effect Hook` 的清理方法。
+  另外值得注意一点是 `something` 在 `Substrate` 内是一个 `Option<u32>` 的格式。因为 `Rust` 和 `Javascript` 的数据类型没有一对一映射，因此无符号整数回到 `JS` 时是以封装的对象呈现。得使用跟着的 ``来把对象转化回`JS` 内的数值。
