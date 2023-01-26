@@ -47,29 +47,6 @@ function Main() {
   return (
     <>
       <button>触发</button>
-      <div>
-        {!currentAccount ? (
-          <span>
-            Create an account with Polkadot-JS Extension (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={CHROME_EXT_URL}
-            >
-              Chrome
-            </a>
-            ,&nbsp;
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={FIREFOX_ADDON_URL}
-            >
-              Firefox
-            </a>
-            )&nbsp;
-          </span>
-        ) : null}
-      </div>
       <BalanceAnnotation />
     </>
   )
@@ -100,7 +77,11 @@ function BalanceAnnotation(props) {
 
 export default function AccountSelector(props) {
   const { api, keyring } = useSubstrateState()
-  return keyring.getPairs && api.query ? (
+  console.log('api', api)
+  console.log('keyring', keyring)
+  console.log('1', 1)
+
+  return keyring?.getPairs && api?.query ? (
     <>
       {/* 头部 */}
       <h1>AccountSelector</h1>
