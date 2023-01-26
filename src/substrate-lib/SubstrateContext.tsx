@@ -31,9 +31,7 @@ interface retrieveChainInfoType {
 // ================ initialState  =======================
 let keyringLoadAll = false
 
-const registry = new TypeRegistry()
-
-const SubstrateContext = React.createContext(null)
+const SubstrateContext = React.createContext({})
 
 const parseQuery = new URLSearchParams(
   window.location.search
@@ -60,6 +58,8 @@ const initialState: initialStateType = {
   apiState: null,
   currentAccount: null,
 }
+
+const registry = new TypeRegistry()
 
 // Reducer function for 'useReducer'
 const reducer = (state: initialStateType, action) => {
@@ -258,7 +258,7 @@ const SubstrateContextProvider = props => {
 const useSubstrate = () => useContext(SubstrateContext)
 
 const useSubstrateState = () =>
-  useContext(SubstrateContext).state
+  (useContext(SubstrateContext) as any).state
 
 export {
   useSubstrate,
