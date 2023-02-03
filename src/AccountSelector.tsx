@@ -5,11 +5,6 @@ import {
   useSubstrateState,
 } from './substrate-lib'
 
-const CHROME_EXT_URL =
-  'https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd'
-const FIREFOX_ADDON_URL =
-  'https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/'
-
 const acctAddr = acct => (acct ? acct.address : '')
 
 function Main() {
@@ -52,7 +47,7 @@ function Main() {
   )
 }
 
-function BalanceAnnotation(props) {
+function BalanceAnnotation() {
   const { api, currentAccount } = useSubstrateState()
   const [accountBalance, setAccountBalance] = useState(0)
 
@@ -79,7 +74,6 @@ export default function AccountSelector(props) {
   const { api, keyring } = useSubstrateState()
   console.log('api', api)
   console.log('keyring', keyring)
-  console.log('1', 1)
 
   return keyring?.getPairs && api?.query ? (
     <>
