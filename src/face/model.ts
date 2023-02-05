@@ -98,14 +98,17 @@ export function startIdentify(videoEl, canvasEl) {
     videoEl.current.srcObject = stream
   }
 
-  function unrun() {
+  function close() {
     if (isOpen) clearTimeout(isOpen)
+    const stream = videoEl.current.srcObject
+    const tracks = stream.getTracks()
+    tracks.forEach((track) => track.stop())
     videoEl.current.srcObject = null
   }
 
   return {
     onPlay,
     run,
-    unrun,
+    close,
   }
 }

@@ -3,7 +3,7 @@ import { startIdentify } from './model'
 export default function webcamFaceDetection() {
   const videoEl = useRef<HTMLVideoElement>()
   const canvas = useRef<HTMLCanvasElement>()
-  const { onPlay, run, unrun } = startIdentify(
+  const { onPlay, run, close } = startIdentify(
     videoEl,
     canvas
   )
@@ -21,7 +21,7 @@ export default function webcamFaceDetection() {
         <canvas ref={canvas} className="absolute" />
       </div>
       <button onClick={() => run()}>检测图像</button>
-      <button onClick={() => unrun()}>关闭图像</button>
+      <button onClick={() => close()}>关闭图像</button>
     </>
   )
 }
