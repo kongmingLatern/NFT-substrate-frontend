@@ -1,7 +1,7 @@
 import { FaceDetectionNet } from "./const"
 import { faceapi } from "."
 
-export function loadModel(videoEl, canvasEl) {
+function loadModel() {
   // ssd_mobilenetv1 options
   let minConfidence = 0.5
 
@@ -13,8 +13,6 @@ export function loadModel(videoEl, canvasEl) {
   let selectedFaceDetector =
     FaceDetectionNet.SSD_MOBILENETV1
 
-  // 计时器变量
-  let isOpen = null
 
   function getCurrentFaceDetectionNet() {
     if (
@@ -42,6 +40,21 @@ export function loadModel(videoEl, canvasEl) {
         scoreThreshold,
       })
   }
+
+  return {
+    getCurrentFaceDetectionNet,
+    getFaceDetectorOptions,
+    isFaceDetectionModelLoaded,
+  }
+}
+
+export function startIdentify(videoEl, canvasEl) {
+
+  // 计时器变量
+  let isOpen = null
+
+  const { getCurrentFaceDetectionNet, getFaceDetectorOptions, isFaceDetectionModelLoaded } = loadModel()
+
   async function onPlay() {
     if (!isFaceDetectionModelLoaded()) {
       await getCurrentFaceDetectionNet().loadFromUri(
@@ -55,7 +68,6 @@ export function loadModel(videoEl, canvasEl) {
     }
 
     const options = getFaceDetectorOptions()
-    console.log(options)
 
     const result = await faceapi.detectSingleFace(
       videoEl.current,
@@ -92,9 +104,6 @@ export function loadModel(videoEl, canvasEl) {
   }
 
   return {
-    getCurrentFaceDetectionNet,
-    getFaceDetectorOptions,
-    isFaceDetectionModelLoaded,
     onPlay,
     run,
     unrun,

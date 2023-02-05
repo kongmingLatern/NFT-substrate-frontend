@@ -1,10 +1,12 @@
 import { useRef } from 'react'
-import { faceapi } from '.'
-import { loadModel } from './loadModel'
+import { startIdentify } from './model'
 export default function webcamFaceDetection() {
   const videoEl = useRef<HTMLVideoElement>()
   const canvas = useRef<HTMLCanvasElement>()
-  const { onPlay, run, unrun } = loadModel(videoEl, canvas)
+  const { onPlay, run, unrun } = startIdentify(
+    videoEl,
+    canvas
+  )
 
   return (
     <>
