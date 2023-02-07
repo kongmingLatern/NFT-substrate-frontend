@@ -1,9 +1,9 @@
 import { useRef } from 'react'
-import { startIdentify } from './model'
+import { startIdentify } from '.'
 export default function webcamFaceDetection() {
   const videoEl = useRef<HTMLVideoElement>()
   const canvas = useRef<HTMLCanvasElement>()
-  const { onPlay, run, close } = startIdentify(
+  const { onPlay, run, close, getRes } = startIdentify(
     videoEl,
     canvas
   )
@@ -22,6 +22,7 @@ export default function webcamFaceDetection() {
       </div>
       <button onClick={() => run()}>检测图像</button>
       <button onClick={() => close()}>关闭图像</button>
+      <button onClick={() => getRes()}>获得数据</button>
     </>
   )
 }
