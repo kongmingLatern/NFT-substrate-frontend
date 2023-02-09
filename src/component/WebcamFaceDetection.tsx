@@ -1,7 +1,6 @@
 import { startIdentify } from '@/face'
-import Webcam from 'react-webcam'
-
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
+import WebcamCapture from './WebcamCapture'
 
 export default function webcamFaceDetection() {
   const videoEl = useRef<HTMLVideoElement>()
@@ -36,38 +35,8 @@ export default function webcamFaceDetection() {
       <button onClick={() => close()}>关闭图像</button>
       <button onClick={() => getRes()}>获得数据</button>
 
-      <Webcam />
+      <h1>拍照</h1>
+      <WebcamCapture />
     </>
   )
 }
-
-// const videoConstraints = {
-//   width: 1280,
-//   height: 720,
-//   facingMode: 'user',
-// }
-
-// const WebcamCapture = () => {
-//   const webcamRef = useRef(null)
-//   const capture = useCallback(() => {
-//     const imageSrc = webcamRef.current.getScreenshot()
-//     console.log(imageSrc)
-//   }, [webcamRef])
-//   return (
-//     <>
-//       <Webcam
-//         audio={false}
-//         height={720}
-//         ref={webcamRef}
-//         screenshotFormat="image/jpeg"
-//         width={1280}
-//         videoConstraints={videoConstraints}
-//       />
-//       <button onClick={capture}>Capture photo</button>
-//     </>
-//   )
-// }
-
-// export default function webcamFaceDetection() {
-//   return <WebcamCapture />
-// }

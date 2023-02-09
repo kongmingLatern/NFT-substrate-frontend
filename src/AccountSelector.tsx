@@ -11,7 +11,7 @@ function Main() {
   const {
     setCurrentAccount,
     state: { keyring, currentAccount },
-  } = useSubstrate()
+  } = useSubstrate() as any
 
   // Get the list of accounts we possess the private key for
   const keyringOptions = keyring

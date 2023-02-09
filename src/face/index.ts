@@ -14,29 +14,26 @@ function startIdentify(videoEl, canvasEl) {
   async function onPlay() {
     if (!isFaceDetectionModelLoaded()) {
       await loadModels(getCurrentFaceDetectionNet)
-    } else if (
-      videoEl.current.paused ||
-      videoEl.current.ended
-    ) {
+    } else if (videoEl.paused || videoEl.ended) {
       return setTimeout(() => onPlay())
     }
 
     const options = getFaceDetectorOptions()
 
     const result = await faceapi.detectSingleFace(
-      videoEl.current,
+      videoEl,
       options
     )
     if (result) {
       console.log(result)
 
       const dims = faceapi.matchDimensions(
-        canvasEl.current,
-        videoEl.current,
+        canvasEl,
+        videoEl,
         true
       )
       faceapi.draw.drawDetections(
-        canvasEl.current,
+        canvasEl,
         faceapi.resizeResults(result, dims)
       )
     }
@@ -49,23 +46,21 @@ function startIdentify(videoEl, canvasEl) {
       await navigator.mediaDevices.getUserMedia({
         video: {},
       })
-    videoEl.current.srcObject = stream
+    videoEl.srcObject = stream
   }
   async function getRes() {
-    const res = await faceapi.detectSingleFace(
-      videoEl.current
-    )
+    const res = await faceapi.detectSingleFace(videoEl)
     console.log(res)
 
-    return await faceapi.detectSingleFace(videoEl.current)
+    return await faceapi.detectSingleFace(videoEl)
   }
 
   function close() {
     if (isOpen) clearTimeout(isOpen)
-    const stream = videoEl.current.srcObject
+    const stream = videoEl.srcObject
     const tracks = stream.getTracks()
     tracks.forEach(track => track.stop())
-    videoEl.current.srcObject = null
+    videoEl.srcObject = null
   }
 
   return {
