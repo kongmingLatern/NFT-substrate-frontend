@@ -25,8 +25,6 @@ function startIdentify(videoEl, canvasEl) {
       options
     )
     if (result) {
-      console.log(result)
-
       const dims = faceapi.matchDimensions(
         canvasEl,
         videoEl,
