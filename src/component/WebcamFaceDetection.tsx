@@ -35,7 +35,7 @@ export default function webcamFaceDetection() {
       <button onClick={() => close()}>关闭图像</button>
       <button onClick={() => getRes()}>获得数据</button>
 
-      <h1>拍照</h1>
+      <h1>Method2: Take Photo by react-webcam</h1>
       <WebcamCapture />
     </>
   )

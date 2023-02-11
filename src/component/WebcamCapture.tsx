@@ -1,14 +1,9 @@
-import { startIdentify } from '@/face'
 import * as faceapi from 'face-api.js'
 import { getFaceDetector, loadModels } from '@/face/model'
 import { useRef, useCallback, useState } from 'react'
 import Webcam from 'react-webcam'
+import { videoConstraints } from '@/face/const'
 
-const videoConstraints = {
-  width: 640,
-  height: 360,
-  facingMode: 'user',
-}
 
 export default function webcamFaceDetection() {
   const webcamRef = useRef(null)
@@ -73,7 +68,6 @@ export default function webcamFaceDetection() {
   return (
     <>
       <div className="relative flex">
-        {/* {play} */}
         <Webcam
           onLoadedMetadata={() => onPlay()}
           audio={false}
@@ -84,6 +78,7 @@ export default function webcamFaceDetection() {
           videoConstraints={videoConstraints}
           autoPlay
         />
+        {/* 人脸信息获取框 */}
         <canvas
           ref={canvas}
           width={640}
@@ -96,6 +91,7 @@ export default function webcamFaceDetection() {
         </button>
       </div>
       <div>
+        <h1>拍照图片展示：</h1>
         <img src={imgSrc} />
       </div>
     </>
