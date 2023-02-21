@@ -4,7 +4,6 @@ import { useRef, useCallback, useState } from 'react'
 import Webcam from 'react-webcam'
 import { videoConstraints } from '@/face/const'
 
-
 export default function webcamFaceDetection() {
   const webcamRef = useRef(null)
   const canvas = useRef<HTMLCanvasElement>(null)
@@ -33,6 +32,7 @@ export default function webcamFaceDetection() {
       webcamRef.current.video,
       options
     )
+    console.log(result)
     if (result) {
       const dims = faceapi.matchDimensions(
         canvas.current,

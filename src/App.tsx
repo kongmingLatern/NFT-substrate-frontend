@@ -5,10 +5,10 @@ import WebcamFaceDetection from './component/WebcamFaceDetection'
 export default function App() {
   return (
     <>
+      {/* <SubstrateContextProvider>
+        <AccountSelector />
+      </SubstrateContextProvider> */}
       <WebcamFaceDetection />
     </>
-    // <SubstrateContextProvider>
-    //   <AccountSelector />
-    // </SubstrateContextProvider>
   )
 }
