@@ -3,8 +3,6 @@ import { getFaceDetector, loadModels } from '@/face/model'
 import { useRef, useCallback, useState } from 'react'
 import { videoConstraints } from '@/face/const'
 import Webcam from 'react-webcam'
-import Board from 'paint-board'
-import 'paint-board/dist/index.css'
 
 export default function webcamFaceDetection() {
   const webcamRef = useRef(null)
@@ -69,8 +67,8 @@ export default function webcamFaceDetection() {
   }, [webcamRef])
   return (
     <>
-      {/* <div className="relative flex"> */}
-      {/* <Webcam
+      <div className="relative flex">
+        <Webcam
           onLoadedMetadata={() => onPlay()}
           audio={false}
           height={360}
@@ -79,25 +77,23 @@ export default function webcamFaceDetection() {
           width={640}
           videoConstraints={videoConstraints}
           autoPlay
-        /> */}
-      {/* 人脸信息获取框 */}
-      {/* <canvas
+        />
+        {/* 人脸信息获取框 */}
+        <canvas
           ref={canvas}
           width={640}
           height={360}
           className="absolute"
-        /> */}
-      {/* <button onClick={capture}>Capture photo</button>
+        />
+        <button onClick={capture}>Capture photo</button>
         <button onClick={() => close()}>
           close webcam
-        </button> */}
-      {/* </div> */}
-      {/* <div> */}
-      {/* <h1>拍照图片展示：</h1>
+        </button>
+      </div>
+      <div>
+        <h1>拍照图片展示：</h1>
         <img src={imgSrc} />
-      </div> */}
-      <Board />
-      {/* <button className="btn rounded-2xl bg-black">123123</button> */}
+      </div>
     </>
   )
 }

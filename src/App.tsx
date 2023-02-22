@@ -3,6 +3,7 @@ import { SubstrateContextProvider } from './substrate-lib'
 import { useEffect, useRef } from 'react'
 import WebcamFaceDetection from './component/WebcamFaceDetection'
 import Board from '@/component/paint/pages/board'
+import Home from './pages/Home'
 export default function App() {
   return (
     <>
@@ -10,7 +11,8 @@ export default function App() {
         <AccountSelector />
       </SubstrateContextProvider> */}
       {/* <WebcamFaceDetection /> */}
-      <Board/>
+      <Home />
+      {/* <Board/> */}
     </>
   )
 }
