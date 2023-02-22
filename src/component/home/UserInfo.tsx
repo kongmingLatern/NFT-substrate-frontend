@@ -17,10 +17,22 @@ export default function UserInfo() {
             />
           </div>
         </label>
+
+        {/* 下拉列表 */}
         <ul
           tabIndex={0}
           className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-black"
         >
+          <li className="justify-between">
+            <div className="flex items-center flex-col justify-start ml-2">
+              <div>
+                余额:
+                <span className="font-bold pl-2 text-lg italic">
+                  100 CS
+                </span>
+              </div>
+            </div>
+          </li>
           <li>
             <a className="justify-between">
               Profile
