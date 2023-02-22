@@ -1,6 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify-icon/react': ^1.0.7
+  '@iconify-icons/mdi-light': ^1.2.5
+  '@iconify-icons/uil': ^1.2.3
   '@polkadot/api': ^7.10.1
   '@polkadot/extension-dapp': ^0.42.7
   '@polkadot/keyring': ^8.4.1
@@ -22,6 +25,7 @@ specifiers:
   daisyui: ^2.46.1
   face-api.js: ^0.22.2
   i18next: ^22.4.9
+  iconify-icon: ^1.0.7
   lodash: ^4.17.21
   postcss: ^8.4.21
   postcss-syntax: ^0.36.2
@@ -52,6 +56,9 @@ dependencies:
   react-webcam: 7.0.1_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
+  '@iconify-icon/react': 1.0.7_react@18.2.0
+  '@iconify-icons/mdi-light': 1.2.5
+  '@iconify-icons/uil': 1.2.3
   '@polkadot/api': 7.15.1
   '@polkadot/extension-dapp': 0.42.10_wvzysgxjcwb5b5phcbwjph77la
   '@polkadot/keyring': 8.7.1_bmecdwyl7ygqccccno3gxwkawy
@@ -67,6 +74,7 @@ devDependencies:
   '@types/webgl2': 0.0.7
   '@vitejs/plugin-react': 3.0.1_vite@4.0.4
   autoprefixer: 10.4.13_postcss@8.4.21
+  iconify-icon: 1.0.7
   postcss: 8.4.21
   postcss-syntax: 0.36.2_postcss@8.4.21
   tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
@@ -512,6 +520,31 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@iconify-icon/react/1.0.7_react@18.2.0:
+    resolution: {integrity: sha512-+Gh2nzO+wfYxJ5fr9mvIc1+iIRhFZBI6NcEWmONQm2cFoqmH2Y2rvzztg+Az5tS+NppPKP2ux3Bbv7Jxj/zwGg==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      iconify-icon: 1.0.7
+      react: 18.2.0
+    dev: true
+
+  /@iconify-icons/mdi-light/1.2.5:
+    resolution: {integrity: sha512-HL71Y9ap0xyIAETgzrPAKg9mBP2uqr/QCAIykngk61LiwVXaazl0dLVW5ghnRh8zEtq3kb2jovZlwPtujoYDnQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-icons/uil/1.2.3:
+    resolution: {integrity: sha512-+UlrTCKJ13k8MdZdBJUdJLwrys6r8/BG3MT+C09Vcqbzh5IKGxS9RdJ7G3XeTn+H2MrIJ/EHWCNNUANlDqLk6A==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
@@ -2227,6 +2260,12 @@ packages:
       '@babel/runtime': 7.20.7
     dev: false
 
+  /iconify-icon/1.0.7:
+    resolution: {integrity: sha512-MxaO3Jhf3f5ymPWGHR9x74f90TNKcq1D+B2iGucGhVtqAgbC9EtM06kKiTGH2CKELNnexckwhrA3/+OpT4HKFw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
     dev: true
@@ -2320,7 +2359,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache/5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -2746,7 +2784,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
