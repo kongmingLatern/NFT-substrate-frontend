@@ -22,18 +22,18 @@ export default function SalesTime() {
     { time: '02', id: 'seconds' },
   ]
   return (
-    <>
+    <div className="font-thin">
       <div>{todaytime}</div>
       <div>
         {remaining.map(item => {
           return (
-            <li className="inline-block mr-6" key={item.id}>
+            <li className="inline-block pr-6" key={item.id}>
               <div>{item.time}</div>
               <div>{item.id}</div>
             </li>
           )
         })}
       </div>
-    </>
+    </div>
   )
 }

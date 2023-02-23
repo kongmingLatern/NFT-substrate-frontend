@@ -24,18 +24,24 @@ export default function CardInfo() {
         </div>
       </div>
       {/* 价格 */}
-      <div className="text-3xl mt-9 ml-4 font-bold">
+      <div className="text-3xl mt-9 font-bold">
         当前价格
       </div>
-      <div className="mt-3 ml-4">
-        <span className="text-3xl text-red-500 ">
-          {' '}
-          100 CS
-        </span>
-        <span className="line-through ml-5">9999cs</span>
+      <div className="flex justify-between mt-3 px-3">
+        <div className="left">
+          <span className="text-3xl font-semibold text-red-500 ">
+            100 CS
+          </span>
+          <span className="line-through ml-5">9999cs</span>
+        </div>
+        <div className="right">
+          <span className="text-red-400 font-semibold">
+            当前最高出价者：xxx
+          </span>
+        </div>
       </div>
       {/* 时间 */}
-      <div className="mt-3 ml-4">
+      <div className="mt-3 pl-2">
         <SalesTime />
       </div>
       {/* 按钮 */}

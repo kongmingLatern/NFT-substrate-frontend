@@ -1,17 +1,17 @@
 import Carousel from '@/component/Carousel'
 import Divider from '@/component/common/Divider'
 import Header from '@/component/common/Header'
-import Merchandise from '@/pages/Merchandise'
+import Detail from '@/pages/Detail'
 
 export default function Home() {
   return (
     <>
       <Header />
       <Divider />
-      <Merchandise />
-
-      <Divider />
       <Carousel />
+      <Divider />
+      <Detail />
+      <Divider />
     </>
   )
 }
