@@ -4,7 +4,7 @@ import SearchInput from './home/SearchInput'
 
 export default function Header() {
   return (
-    <div className="navbar text-black justify-between p-5 ">
+    <div className="navbar text-black justify-between">
       <div className="w-[50%]">
         <a className="btn btn-ghost normal-case text-xl font-sans">
           NFT 交易系统

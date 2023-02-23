@@ -6,10 +6,10 @@ import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    hmr: true,
-    watch: { usePolling: true },
-  },
+  // server: {
+  //   hmr: true,
+  //   watch: { usePolling: true },
+  // },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
