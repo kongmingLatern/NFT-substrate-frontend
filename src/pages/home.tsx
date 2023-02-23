@@ -1,34 +1,17 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import Rollove from "../component/Rollover"
+import Carousel from '@/component/common/Carousel'
+import Divider from '@/component/common/Divider'
+import Header from '@/component/common/Header'
+import Detail from '@/pages/Detail'
 
 export default function Home() {
-
   return (
-    <div className='max-w-6xl  mx-auto'>
-      <div className=''>
-        <Tabs>
-          <TabList className='text-4xl'>
-            <Tab>所有</Tab>
-            <Tab>艺术</Tab>
-            <Tab>游戏</Tab>
-            <Tab>摄影</Tab>
-          </TabList>
-          <TabPanels>
-              <TabPanel>
-                <div className=' mx-auto' > <Rollove></Rollove></div>
-              </TabPanel>
-              <TabPanel>
-                <p>two!</p>
-              </TabPanel>
-              <TabPanel>
-                <p>three!</p>
-              </TabPanel>
-              <TabPanel>
-                <p>three!</p>
-              </TabPanel>
-            </TabPanels>
-        </Tabs>
-      </div> 
-    </div>
+    <>
+      <Header />
+      <Divider />
+      <Carousel />
+      <Divider />
+      <Detail />
+      <Divider />
+    </>
   )
 }
