@@ -1,6 +1,6 @@
-import NavSubmenu from './home/NavSubmenu'
-import UserInfo from './home/UserInfo'
-import SearchInput from './home/SearchInput'
+import NavSubmenu from '../home/NavSubmenu'
+import UserInfo from '../home/UserInfo'
+import SearchInput from '../home/SearchInput'
 
 export default function Header() {
   return (

@@ -1,6 +1,7 @@
-import Divider from '@/component/Divider'
-import Header from '@/component/Header'
-import Merchandise from '@/component/Merchandise'
+import Carousel from '@/component/Carousel'
+import Divider from '@/component/common/Divider'
+import Header from '@/component/common/Header'
+import Merchandise from '@/pages/Merchandise'
 
 export default function Home() {
   return (
@@ -8,6 +9,9 @@ export default function Home() {
       <Header />
       <Divider />
       <Merchandise />
+
+      <Divider />
+      <Carousel />
     </>
   )
 }
