@@ -1,11 +1,11 @@
 import React, { useMemo, useState, MouseEvent } from 'react'
-import { PaintBoard } from '../../utils/paintBoard'
-import { CANVAS_ELE_TYPE } from '../../utils/constants'
-import ToolPanel from '../../components/toolPanel'
-import { useBackspace, useResizeEvent, useSpaceEvent } from '../../hooks/event'
-import Info from '../../components/info'
-import { CURSOR_TYPE } from '../../utils/cursor'
-import { TextEdit } from '../../utils/element/text'
+import { PaintBoard } from './utils/paintBoard'
+import { CANVAS_ELE_TYPE } from './utils/constants'
+import ToolPanel from './components/toolPanel'
+import { useBackspace, useResizeEvent, useSpaceEvent } from './hooks/event'
+import Info from './components/info'
+import { CURSOR_TYPE } from './utils/cursor'
+import { TextEdit } from './utils/element/text'
 
 const textEdit = new TextEdit()
 
