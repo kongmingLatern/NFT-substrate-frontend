@@ -69,7 +69,7 @@ export class Layer {
    * @param dropIndex
    */
   swap(dragIndex: number, dropIndex: number) {
-    ;[this.stack[dragIndex], this.stack[dropIndex]] = [
+    [this.stack[dragIndex], this.stack[dropIndex]] = [
       this.stack[dropIndex],
       this.stack[dragIndex]
     ]

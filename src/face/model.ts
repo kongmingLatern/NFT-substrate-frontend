@@ -1,15 +1,15 @@
 import { FaceDetectionNet } from './const'
-import { faceapi } from '.'
+import { faceapi } from './index'
 
 export function getFaceDetector(
   selectedFaceDetector = FaceDetectionNet.SSD_MOBILENETV1
 ) {
   // ssd_mobilenetv1 options
-  let minConfidence = 0.5
+  const minConfidence = 0.5
 
   // tiny_face_detector options
-  let inputSize = 512
-  let scoreThreshold = 0.5
+  const inputSize = 512
+  const scoreThreshold = 0.5
 
   function getCurrentFaceDetectionNet() {
     if (
