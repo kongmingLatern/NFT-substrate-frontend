@@ -1,11 +1,18 @@
 import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { CANVAS_ELE_TYPE, CommonWidth } from '../../utils/constants'
+import {
+  CANVAS_ELE_TYPE,
+  CommonWidth,
+} from '../../utils/constants'
 import { PaintBoard } from '../../utils/paintBoard'
 import { FreeDrawStyle } from '../../utils/element/freeDraw'
 import Layer from '../layer'
-import { CHANGE_COLOR_TYPE, styleSwitch, typeSwitch } from './constant'
+import {
+  CHANGE_COLOR_TYPE,
+  styleSwitch,
+  typeSwitch,
+} from './constant'
 import UndoIcon from '../../components/icons/undo'
 import RedoIcon from '../../components/icons/redo'
 import SaveIcon from '../../components/icons/save'
@@ -26,7 +33,11 @@ let toastTimeout: NodeJS.Timeout | null = null
 /**
  * 操作面板
  */
-const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
+const ToolPanel: React.FC<IProps> = ({
+  board,
+  toolType,
+  setToolType,
+}) => {
   const { t } = useTranslation()
   const [, setRefresh] = useState(0) // 刷新数据
   const [toastState, setToastState] = useState(false) // 复制提示
@@ -40,13 +51,18 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
   }, [board?.currentLineColor])
 
   // 改变画笔颜色
-  const changeLineColor = (color: string, index: number, type: string) => {
+  const changeLineColor = (
+    color: string,
+    index: number,
+    type: string
+  ) => {
     if (board) {
       const colors = [...board.currentLineColor]
       colors[index] = color
-      const newColor = type === CHANGE_COLOR_TYPE.UNI ? [color] : colors
+      const newColor =
+        type === CHANGE_COLOR_TYPE.UNI ? [color] : colors
       board.setFreeDrawColor(newColor)
-      setRefresh((v) => v + 1)
+      setRefresh(v => v + 1)
     }
   }
 
@@ -56,7 +72,7 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
       const colors = [...board.currentLineColor]
       colors.splice(index, 1)
       board.setFreeDrawColor(colors)
-      setRefresh((v) => v + 1)
+      setRefresh(v => v + 1)
     }
   }
 
@@ -117,7 +133,7 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
         default:
           break
       }
-      setRefresh((v) => v + 1)
+      setRefresh(v => v + 1)
     }
   }
 
@@ -125,21 +141,24 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
   const setFreeDrawStyle = (mode: FreeDrawStyle) => {
     if (board) {
       board.setFreeDrawStyle(mode)
-      setRefresh((v) => v + 1)
+      setRefresh(v => v + 1)
     }
   }
 
   return (
     <>
       <div
-        className={`fixed top-5 left-5 flex flex-col card shadow-xl overflow-visible ${
+        className={`mt-[50px] z-10 fixed top-5 left-5 flex flex-col card shadow-xl overflow-visible ${
           showPanel ? 'p-5' : ''
         }`}
         style={{ backgroundColor: '#EEF1FF' }}
       >
         {/* 控制面板显示 */}
         <label className="btn btn-circle swap swap-rotate absolute -top-4 -left-4 h-8 w-8 min-h-0">
-          <input type="checkbox" onChange={() => setShowPanel((v) => !v)} />
+          <input
+            type="checkbox"
+            onChange={() => setShowPanel(v => !v)}
+          />
           <CloseIcon className="swap-on fill-current" />
           <MenuIcon className="swap-off fill-current" />
         </label>
@@ -165,7 +184,7 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
               <div className="mt-3">
                 <div className="font-bold">Width</div>
                 <div className="btn-group flex mt-1">
-                  {Object.values(CommonWidth).map((w) => (
+                  {Object.values(CommonWidth).map(w => (
                     <button
                       key={w}
                       className={classNames({
@@ -173,9 +192,10 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
                         'btn-sm': true,
                         'flex-grow': true,
                         'btn-active':
-                          toolType === CANVAS_ELE_TYPE.FREE_DRAW
+                          toolType ===
+                          CANVAS_ELE_TYPE.FREE_DRAW
                             ? board?.currentLineWidth === w
-                            : board?.cleanWidth === w
+                            : board?.cleanWidth === w,
                       })}
                       onClick={() => setWidth(w)}
                     >
@@ -183,7 +203,7 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
                         className="rounded-2xl bg-black"
                         style={{
                           height: `${w / 2}px`,
-                          width: '30px'
+                          width: '30px',
                         }}
                         key={w}
                       ></div>
@@ -197,33 +217,49 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
               <div className="form-control mt-3">
                 <div className="font-bold">Color</div>
                 <div className="mt-1 flex items-center w-full">
-                  {board?.currentFreeDrawStyle === FreeDrawStyle.MultiColor ? (
+                  {board?.currentFreeDrawStyle ===
+                  FreeDrawStyle.MultiColor ? (
                     // 多色配置
                     <>
-                      {board.currentLineColor.map((color, i) => {
-                        return (
-                          <div className="w-8 h-8 mr-2 indicator" key={i}>
-                            <input
-                              type="color"
-                              value={color}
-                              onChange={(e) => {
-                                changeLineColor(e.target.value, i, 'double')
-                              }}
-                              className={styles.lineColor}
-                            />
-                            {board.currentLineColor.length > 1 && (
-                              <span
-                                onClick={() => deleteLineColor(i)}
-                                className="indicator-item badge badge-secondary w-3 h-3 p-0 text-sm bg-black text-white border-black cursor-pointer block text-center"
-                                style={{ lineHeight: '0.5rem' }}
-                              >
-                                x
-                              </span>
-                            )}
-                          </div>
-                        )
-                      })}
-                      {board.currentLineColor.length < 6 && (
+                      {board.currentLineColor.map(
+                        (color, i) => {
+                          return (
+                            <div
+                              className="w-8 h-8 mr-2 indicator"
+                              key={i}
+                            >
+                              <input
+                                type="color"
+                                value={color}
+                                onChange={e => {
+                                  changeLineColor(
+                                    e.target.value,
+                                    i,
+                                    'double'
+                                  )
+                                }}
+                                className={styles.lineColor}
+                              />
+                              {board.currentLineColor
+                                .length > 1 && (
+                                <span
+                                  onClick={() =>
+                                    deleteLineColor(i)
+                                  }
+                                  className="indicator-item badge badge-secondary w-3 h-3 p-0 text-sm bg-black text-white border-black cursor-pointer block text-center"
+                                  style={{
+                                    lineHeight: '0.5rem',
+                                  }}
+                                >
+                                  x
+                                </span>
+                              )}
+                            </div>
+                          )
+                        }
+                      )}
+                      {board.currentLineColor.length <
+                        6 && (
                         <div
                           className="w-8 h-8 rounded-sm border-dashed border-2 border-black text-center leading-6 text-2xl box-border cursor-pointer"
                           onClick={() => {
@@ -245,7 +281,7 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
                         <input
                           type="color"
                           value={`#${colorInput}`}
-                          onChange={(e) => {
+                          onChange={e => {
                             changeLineColor(
                               e.target.value,
                               1,
@@ -256,7 +292,9 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
                         />
                       </div>
                       <label className="input-group">
-                        <span className="font-bold bg-primary">#</span>
+                        <span className="font-bold bg-primary">
+                          #
+                        </span>
                         <input
                           onClick={copyColor}
                           value={colorInput}
@@ -275,30 +313,44 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
               <div className="mt-3">
                 <div className="font-bold">Style</div>
                 <div className="btn-group flex">
-                  {styleSwitch.line_1.map(({ type, text }) => (
-                    <button
-                      key={type}
-                      className={`btn btn-sm flex-grow ${
-                        board?.currentFreeDrawStyle === type ? 'btn-active' : ''
-                      }`}
-                      onClick={() => setFreeDrawStyle(type)}
-                    >
-                      {t(text)}
-                    </button>
-                  ))}
+                  {styleSwitch.line_1.map(
+                    ({ type, text }) => (
+                      <button
+                        key={type}
+                        className={`btn btn-sm flex-grow ${
+                          board?.currentFreeDrawStyle ===
+                          type
+                            ? 'btn-active'
+                            : ''
+                        }`}
+                        onClick={() =>
+                          setFreeDrawStyle(type)
+                        }
+                      >
+                        {t(text)}
+                      </button>
+                    )
+                  )}
                 </div>
                 <div className="btn-group mt-1 flex">
-                  {styleSwitch.line_2.map(({ type, text }) => (
-                    <button
-                      key={type}
-                      className={`btn btn-sm flex-grow ${
-                        board?.currentFreeDrawStyle === type ? 'btn-active' : ''
-                      }`}
-                      onClick={() => setFreeDrawStyle(type)}
-                    >
-                      {t(text)}
-                    </button>
-                  ))}
+                  {styleSwitch.line_2.map(
+                    ({ type, text }) => (
+                      <button
+                        key={type}
+                        className={`btn btn-sm flex-grow ${
+                          board?.currentFreeDrawStyle ===
+                          type
+                            ? 'btn-active'
+                            : ''
+                        }`}
+                        onClick={() =>
+                          setFreeDrawStyle(type)
+                        }
+                      >
+                        {t(text)}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
             )}
@@ -308,28 +360,40 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
               <ul className="menu menu-horizontal bg-base-100 rounded-box justify-between mt-1">
                 <li>
                   <a onClick={undo}>
-                    <div className="tooltip" data-tip={t('operate.undo')}>
+                    <div
+                      className="tooltip"
+                      data-tip={t('operate.undo')}
+                    >
                       <UndoIcon />
                     </div>
                   </a>
                 </li>
                 <li>
                   <a onClick={redo}>
-                    <div className="tooltip" data-tip={t('operate.redo')}>
+                    <div
+                      className="tooltip"
+                      data-tip={t('operate.redo')}
+                    >
                       <RedoIcon />
                     </div>
                   </a>
                 </li>
                 <li>
                   <a onClick={clean}>
-                    <div className="tooltip" data-tip={t('operate.clean')}>
+                    <div
+                      className="tooltip"
+                      data-tip={t('operate.clean')}
+                    >
                       <CleanIcon />
                     </div>
                   </a>
                 </li>
                 <li>
                   <a onClick={saveImage}>
-                    <div className="tooltip" data-tip={t('operate.save')}>
+                    <div
+                      className="tooltip"
+                      data-tip={t('operate.save')}
+                    >
                       <SaveIcon />
                     </div>
                   </a>
@@ -337,7 +401,10 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
               </ul>
             </div>
             {/* 图层设置 */}
-            <Layer board={board} refresh={() => setRefresh((v) => v + 1)} />
+            <Layer
+              board={board}
+              refresh={() => setRefresh(v => v + 1)}
+            />
           </>
         )}
       </div>
@@ -345,7 +412,9 @@ const ToolPanel: React.FC<IProps> = ({ board, toolType, setToolType }) => {
         <div className="toast toast-top toast-center">
           <div className="alert alert-success">
             <div>
-              <span className="whitespace-nowrap">Copy successfully.</span>
+              <span className="whitespace-nowrap">
+                Copy successfully.
+              </span>
             </div>
           </div>
         </div>

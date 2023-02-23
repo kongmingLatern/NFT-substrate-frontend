@@ -2,7 +2,11 @@ import React, { useMemo, useState, MouseEvent } from 'react'
 import { PaintBoard } from './utils/paintBoard'
 import { CANVAS_ELE_TYPE } from './utils/constants'
 import ToolPanel from './components/toolPanel'
-import { useBackspace, useResizeEvent, useSpaceEvent } from './hooks/event'
+import {
+  useBackspace,
+  useResizeEvent,
+  useSpaceEvent,
+} from './hooks/event'
 import Info from './components/info'
 import { CURSOR_TYPE } from './utils/cursor'
 import { TextEdit } from './utils/element/text'
@@ -11,7 +15,8 @@ const textEdit = new TextEdit()
 
 const Board: React.FC = () => {
   // 初始化画板
-  const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
+  const [canvasRef, setCanvasRef] =
+    useState<HTMLCanvasElement | null>(null)
   const board = useMemo(() => {
     if (canvasRef) {
       return new PaintBoard(canvasRef)
@@ -19,7 +24,9 @@ const Board: React.FC = () => {
   }, [canvasRef])
 
   // 工具类型
-  const [toolType, setToolType] = useState<string>(CANVAS_ELE_TYPE.FREE_DRAW)
+  const [toolType, setToolType] = useState<string>(
+    CANVAS_ELE_TYPE.FREE_DRAW
+  )
 
   const handleToolType = (type: string) => {
     if (board) {
@@ -49,7 +56,10 @@ const Board: React.FC = () => {
   useResizeEvent(() => {
     if (board) {
       board.initCanvasSize()
-      board.context.translate(board.originTranslate.x, board.originTranslate.y)
+      board.context.translate(
+        board.originTranslate.x,
+        board.originTranslate.y
+      )
       board.render()
     }
   })
@@ -61,13 +71,14 @@ const Board: React.FC = () => {
   })
 
   // 监听鼠标事件
-  const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
+  const [isMouseDown, setIsMouseDown] =
+    useState<boolean>(false)
   const mouseDown = (event: MouseEvent) => {
     if (board) {
       const { clientX: x, clientY: y } = event
       const position = {
         x,
-        y
+        y,
       }
       // 如果有文本编辑框，取消编辑
       if (textEdit) {
@@ -95,7 +106,7 @@ const Board: React.FC = () => {
       const { clientX: x, clientY: y } = event
       const position = {
         x,
-        y
+        y,
       }
       // 双击展示文字输入框
       textEdit.showTextInput(position)
@@ -107,14 +118,14 @@ const Board: React.FC = () => {
       if (isPressSpace && isMouseDown) {
         board.dragCanvas({
           x,
-          y
+          y,
         })
       } else {
         switch (toolType) {
           case CANVAS_ELE_TYPE.SELECT:
             board.select.moveSelectElement({
               x,
-              y
+              y,
             })
             break
           case CANVAS_ELE_TYPE.FREE_DRAW:
@@ -122,7 +133,7 @@ const Board: React.FC = () => {
             if (isMouseDown) {
               board.currentAddPosition({
                 x,
-                y
+                y,
               })
             }
             break
@@ -140,13 +151,14 @@ const Board: React.FC = () => {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col w-screen h-screen">
+    <div className="mt-[50px] flex justify-center items-center flex-col w-screen h-screen">
       <ToolPanel
         board={board}
         toolType={toolType}
         setToolType={handleToolType}
       />
       <canvas
+        className="card"
         ref={setCanvasRef}
         onMouseDown={mouseDown}
         onMouseMove={mouseMove}
