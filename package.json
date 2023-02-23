@@ -8,19 +8,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.2.0",
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "canvas": "^2.11.0",
-    "daisyui": "^2.46.1",
-    "face-api.js": "^0.22.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-webcam": "^7.0.1",
     "classnames": "^2.3.2",
+    "daisyui": "^2.50.2",
+    "echarts": "^5.4.1",
+    "echarts-for-react": "^3.0.2",
+    "face-api.js": "^0.22.2",
+    "framer-motion": "^9.0.7",
     "i18next": "^22.4.9",
     "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-i18next": "^12.1.5"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.1.5",
+    "react-webcam": "^7.0.1",
+    "recharts": "^2.4.3"
   },
   "devDependencies": {
     "@polkadot/api": "^7.10.1",
