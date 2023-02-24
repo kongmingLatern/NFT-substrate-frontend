@@ -13,9 +13,6 @@ export default function Home() {
       <Carousel />
       <Divider />
 
-      <Detail />
-      <Divider />
-
       <Create />
       <Divider />
     </>
