@@ -12,8 +12,8 @@ export default function App() {
         <AccountSelector />
       </SubstrateContextProvider> */}
       {/* <WebcamFaceDetection /> */}
-      {/* <Home /> */}
-      <Create />
+      <Home />
+      {/* <Create /> */}
       {/* <Board/> */}
     </>
   )
