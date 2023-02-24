@@ -1,6 +1,6 @@
 import Image from '@/assets/1.jpg'
 import Divider from '../common/Divider'
-export default function NftCard() {
+export default function KKNftCard() {
   return (
     <>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
@@ -17,7 +17,7 @@ export default function NftCard() {
                   }}
                 />
               </figure>
-              <div className="card-body bg-white rounded-lg glass">
+              <div className="card-body bg-black rounded-lg glass text-white hover:text-black hover:ease-in-out hover:duration-300 hover:bg-blue-100">
                 <h2 className="card-title">
                   常熟理工 Logo
                 </h2>
