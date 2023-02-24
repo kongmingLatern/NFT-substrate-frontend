@@ -5,17 +5,18 @@
 - TypeScript
 - React
 - Vite
-- Unocss
 - Polkadot
 - Canvas
-- Face-api
-- React-webcam
 - Husky
 - Eslint
 - Prettier
+- Face-api
+- React-webcam
+- TailWindCSS
+- DaisyUI
 - Chakra UI
 - Nuka Carousel
-- DaisyUI
+- i18n
 
 ## 环境
 
@@ -25,14 +26,14 @@
 ## 功能点
 
 1. 个性化画图
-   ○ canvas
-   ○ graph
-   ○ 保存（手动，自动 5s）
-   ○ 存储（先放缓存里）
-   ○ 简洁
-   ○ 可扩展性
-   ○ 可维护性
-   ○ （加水印）
+   - canvas
+   - graph
+   - 保存（手动，自动 5s）
+   - 存储（先放缓存里）
+   - 简洁
+   - 可扩展性
+   - 可维护性
+   - （加水印）
 2. 可视化数据
 3. 人脸识别
 4. 交易
