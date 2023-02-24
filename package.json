@@ -6,6 +6,7 @@
     "dev": "vite --port 8000",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "prepare": "husky install",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx --fix --quiet ./src"
   },
   "dependencies": {
@@ -29,6 +30,8 @@
     "react-webcam": "^7.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@iconify-icon/react": "^1.0.7",
     "@iconify-icons/mdi-light": "^1.2.5",
     "@iconify-icons/uil": "^1.2.3",
