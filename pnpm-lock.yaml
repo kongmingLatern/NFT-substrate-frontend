@@ -49,6 +49,7 @@ specifiers:
   react-dom: ^18.2.0
   react-i18next: ^12.1.5
   react-router-dom: ^6.8.1
+  react-transition-group: ^4.4.5
   react-webcam: ^7.0.1
   tailwindcss: ^3.2.7
   ts-node: ^10.9.1
@@ -73,6 +74,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-i18next: 12.1.5_3yopsigl4h4eb2nqrqfsy65uwi
   react-router-dom: 6.8.1_biqbaboplfbrettd7655fr4n2y
+  react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   react-webcam: 7.0.1_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -3724,6 +3726,13 @@ packages:
       esutils: 2.0.3
     dev: true
 
+  /dom-helpers/5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+      csstype: 3.1.1
+    dev: false
+
   /dot-prop/5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
@@ -5621,6 +5630,20 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.4.1
+    dev: false
+
+  /react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.20.7
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-webcam/7.0.1_biqbaboplfbrettd7655fr4n2y:
