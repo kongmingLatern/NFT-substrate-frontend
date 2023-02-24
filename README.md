@@ -10,6 +10,7 @@
 - Husky
 - Eslint
 - Prettier
+- CommitLint
 - Face-api
 - React-webcam
 - TailWindCSS
