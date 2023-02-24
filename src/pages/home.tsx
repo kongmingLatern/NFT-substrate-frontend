@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Divider />
-
+      {/* <Divider />
+      <
       <Carousel />
       <Divider />
 
-      <Trending />
+      <Create />
       <Divider />
     </>
   )

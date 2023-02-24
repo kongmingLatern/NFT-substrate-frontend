@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Headpicture() {
   return (
-    <div>
-      fdsa
+    <div className='w-8/10'>
+      
     </div>
   )
 }
