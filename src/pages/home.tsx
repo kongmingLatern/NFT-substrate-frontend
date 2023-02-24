@@ -1,7 +1,7 @@
 import Carousel from '@/component/common/Carousel'
 import Divider from '@/component/common/Divider'
 import Header from '@/component/common/Header'
-import Create from './Create'
+import Trending from '@/component/Trending'
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Carousel />
       <Divider />
 
-      <Create />
+      <Trending />
       <Divider />
     </>
   )

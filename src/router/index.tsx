@@ -1,5 +1,7 @@
+import Create from '@/pages/Create'
 import Detail from '@/pages/Detail'
 import Home from '@/pages/Home'
+import Personal from '@/pages/Personal'
 import {
   createBrowserRouter,
   Navigate,
@@ -22,5 +24,13 @@ export const router = createBrowserRouter([
   {
     path: '/detail',
     element: <Detail />,
+  },
+  {
+    path: '/personal',
+    element: <Personal />,
+  },
+  {
+    path: '/paint',
+    element: <Create />,
   },
 ])
