@@ -10,11 +10,11 @@ export default function SimpleSlider() {
   }
   return (
     <Carousel {...props}>
-      <img className="mx-auto h-auto" src={Image} />
-      <img className="mx-auto h-auto" src={Image} />
-      <img className="mx-auto h-auto" src={Image} />
-      <img className="mx-auto h-auto" src={Image} />
-      <img className="mx-auto h-auto" src={Image} />
-    </Carousel>              
+      <img className="mx-auto h-[300px]" src={Image} />
+      <img className="mx-auto h-[300px]" src={Image} />
+      <img className="mx-auto h-[300px]" src={Image} />
+      <img className="mx-auto h-[300px]" src={Image} />
+      <img className="mx-auto h-[300px]" src={Image} />
+    </Carousel>
   )
 }
