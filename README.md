@@ -1,6 +1,53 @@
 # NFT-Substrate-Frontend
 
-## 1. 一些 API 的使用
+## 前端技术架构
+
+- TypeScript
+- React
+- Vite
+- Unocss
+- Polkadot
+- Canvas
+- Face-api
+- React-webcam
+- Husky
+- Eslint
+- Prettier
+- Chakra UI
+- Nuka Carousel
+- DaisyUI
+
+## 环境
+
+- Web3.0
+- Webassmebly
+
+## 功能点
+
+1. 个性化画图
+   ○ canvas
+   ○ graph
+   ○ 保存（手动，自动 5s）
+   ○ 存储（先放缓存里）
+   ○ 简洁
+   ○ 可扩展性
+   ○ 可维护性
+   ○ （加水印）
+2. 可视化数据
+3. 人脸识别
+4. 交易
+   购买方人脸识别
+5. 上传
+   上传方人脸识别，设置初始价，最低出价等
+6. 拍卖
+   - 设置时间
+   - 报价
+   - 收藏品
+7. 购物车
+
+## Substrate 与 Polkadot
+
+## 1. 一些 API 的使用 JS
 
 1.`web3Enable(dappName: string): Promise<InjectedExtension[]>`
 
