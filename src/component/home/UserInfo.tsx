@@ -1,4 +1,5 @@
 import { Icon } from '@iconify-icon/react'
+import { Link } from 'react-router-dom'
 
 export default function UserInfo() {
   return (
@@ -34,10 +35,13 @@ export default function UserInfo() {
             </div>
           </li>
           <li>
-            <a className="justify-between">
+            <Link
+              className="justify-between"
+              to={'/personal'}
+            >
               Profile
               <span className="badge">New</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a>Settings</a>

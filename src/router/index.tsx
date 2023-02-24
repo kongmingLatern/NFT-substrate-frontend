@@ -1,3 +1,4 @@
+import Create from '@/pages/Create'
 import Detail from '@/pages/Detail'
 import Home from '@/pages/Home'
 import Personal from '@/pages/Personal'
@@ -27,5 +28,9 @@ export const router = createBrowserRouter([
   {
     path: '/personal',
     element: <Personal />,
+  },
+  {
+    path: '/paint',
+    element: <Create />,
   },
 ])
