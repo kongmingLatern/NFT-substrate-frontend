@@ -11,8 +11,7 @@ export default function Item() {
        <div className='h-20  rounded-xl  flex  hover:bg-gray-200' onMouseEnter={black} onMouseLeave={black}>
         <div className='w-20 mx-2 '>
             <img className='w-20  rounded-xl h-20 my-1' src="../../../public/爱心.png" alt="center" />
-        </div>
-        
+        </div> 
         <div className='w-56'>
             <div className='mt-3 font-semibold text-sm'>name</div>
             <div className='flex text-sm mt-1 '>

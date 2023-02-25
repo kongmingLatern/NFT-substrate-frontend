@@ -13,8 +13,7 @@ export default function Attention() {
       <Popover trigger="hover">
         <PopoverTrigger>
             <button><Icon icon="ic:baseline-error-outline" /></button>
-        </PopoverTrigger>
-        
+        </PopoverTrigger>     
         <PopoverContent>
             <PopoverArrow />
             {/* <PopoverHeader>Confirmation!</PopoverHeader> */}

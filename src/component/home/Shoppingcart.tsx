@@ -35,7 +35,6 @@ export default function Shoppingcart() {
             onClose={onClose}
             finalFocusRef={btnRef}
             >
-              
             <DrawerOverlay />
             <DrawerContent my="4" mr="2.5" borderRadius="3xl">
                 <DrawerCloseButton />
