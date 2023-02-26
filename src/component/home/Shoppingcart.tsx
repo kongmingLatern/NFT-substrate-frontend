@@ -4,7 +4,7 @@ import { Icon } from '@iconify-icon/react'
 import Item  from './Item'
 import Attention from '../common/Attention'
 export default function Shoppingcart() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     return (
       <>

@@ -9,7 +9,6 @@ export default function Attention() {
         </PopoverTrigger>     
         <PopoverContent>
             <PopoverArrow />
-            {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
             <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
         </PopoverContent>
       </Popover>
