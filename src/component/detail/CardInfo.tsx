@@ -1,3 +1,4 @@
+import Echarts from '@/echarts/Echarts'
 import DetailIcon from './DetailIcon'
 import Operation from './Operation'
 import SalesTime from './SalesTime'
@@ -40,12 +41,18 @@ export default function CardInfo() {
           </span>
         </div>
       </div>
+      {/* 条形图 */}
+      <Echarts
+        type="line"
+        data={[100, 200, 300, 500, 200, 10, 250]}
+      />
       {/* 时间 */}
       <div className="mt-3 pl-2">
         <SalesTime />
       </div>
+
       {/* 按钮 */}
-      <div className="w-full mt-6 ">
+      <div className="w-full mt-6 flex justify-around">
         <Operation />
       </div>
       <div>
