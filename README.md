@@ -1,23 +1,31 @@
 # NFT-Substrate-Frontend
 
+## 目前完成的功能点
+
+- 画板工具（引入了 `paint-canvas`，适配了 `i18n`）
+- 可视化数据的展示（引入了 `Echarts`，并进行了简单封装）
+- 人脸识别（引入了 `face-api.js`）
+- 杂七杂八的页面（引入了 `Chakra UI`等组件）
+
 ## 前端技术架构
 
 - TypeScript
 - React
 - Vite
-- Polkadot
-- Canvas
+- Vitest（测试框架）
+- Polkadot（区块链 API）
+- Canvas（画板）
+- i18n
 - Husky
 - Eslint
 - Prettier
 - CommitLint
-- Face-api
-- React-webcam
+- Face-api（人脸识别）
+- React-webcam（基于 `React` 的一个封装好的摄像头工具库）
 - TailWindCSS
 - DaisyUI
 - Chakra UI
 - Nuka Carousel
-- i18n
 
 ## 环境
 
