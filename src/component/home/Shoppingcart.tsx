@@ -17,9 +17,9 @@ export default function Shoppingcart() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   return (
-    <>
+    <span>
       <button
-        className="flex"
+        className="flex btn"
         ref={btnRef}
         onClick={onOpen}
       >
@@ -31,7 +31,9 @@ export default function Shoppingcart() {
             height={25}
           />
         </div>
-        <span className="leading-relaxed"> 购物车</span>
+        <span className="leading-relaxed">
+          &nbsp;购物车
+        </span>
       </button>
       <Drawer
         isOpen={isOpen}
@@ -74,6 +76,6 @@ export default function Shoppingcart() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </>
+    </span>
   )
 }

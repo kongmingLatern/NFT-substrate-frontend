@@ -1,5 +1,6 @@
 import { Icon } from '@iconify-icon/react'
 import { Link } from 'react-router-dom'
+import Shoppingcart from './Shoppingcart'
 
 export default function NavSubmenu() {
   return (
@@ -55,7 +56,8 @@ export default function NavSubmenu() {
         </Link>
       </li>
       <li>
-        <span>
+        <Shoppingcart />
+        {/* <span>
           <Icon
             icon="material-symbols:shopping-cart-rounded"
             color="rgba(204, 204, 204, 0.8)"
@@ -63,7 +65,7 @@ export default function NavSubmenu() {
             height={25}
           />
           购物车
-        </span>
+        </span> */}
       </li>
     </ul>
   )
