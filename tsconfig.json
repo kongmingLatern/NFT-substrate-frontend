@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -19,10 +19,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    },
+    }
   },
   "include": ["src", "**/*.ts"],
-  "references": [{
-    "path": "./tsconfig.node.json"
-  }]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
