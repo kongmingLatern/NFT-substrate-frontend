@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Icon } from '@iconify-icon/react'
+import Image from '@/assets/gd1.png'
 
 export default function Item() {
   const [changingvalue, setChangevalue] = useState(true)
@@ -9,18 +10,17 @@ export default function Item() {
   return (
     <>
       <div
-        className="h-20  rounded-xl  flex  hover:bg-gray-200"
+        className="h-20 rounded-xl flex hover:bg-gray-200 items-center"
         onMouseEnter={black}
         onMouseLeave={black}
       >
-        <div className="w-20 mx-2 ">
+        <div className="flex-[1] mx-2 ">
           <img
-            className="w-20  rounded-xl h-20 my-1"
-            src="../../../public/爱心.png"
-            alt="center"
+            className="w-[100%] rounded-xl my-1"
+            src={Image}
           />
         </div>
-        <div className="w-56">
+        <div className="flex-[3]">
           <div className="mt-3 font-semibold text-sm">
             name
           </div>

@@ -18,23 +18,17 @@ export default function Shoppingcart() {
   const btnRef = React.useRef()
   return (
     <span>
-      <button
-        className="flex btn"
-        ref={btnRef}
-        onClick={onOpen}
-      >
-        <div className="">
-          <Icon
-            icon="material-symbols:shopping-cart-rounded"
-            color="rgba(204, 204, 204, 0.8)"
-            width={25}
-            height={25}
-          />
-        </div>
+      <span className="flex" ref={btnRef} onClick={onOpen}>
+        <Icon
+          icon="material-symbols:shopping-cart-rounded"
+          color="rgba(204, 204, 204, 0.8)"
+          width={25}
+          height={25}
+        />
         <span className="leading-relaxed">
           &nbsp;购物车
         </span>
-      </button>
+      </span>
       <Drawer
         isOpen={isOpen}
         placement="right"
