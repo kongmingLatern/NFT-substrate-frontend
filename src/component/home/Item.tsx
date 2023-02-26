@@ -28,12 +28,12 @@ export default function Item() {
             <div className="w-36 text-sm">介绍</div>
             <div className="w-10  mr-0">
               <div
-                className="w-full h-full text-right "
+                className="w-full h-full text-right whitespace-nowrap "
                 style={{
                   display: changingvalue ? 'block' : 'none',
                 }}
               >
-                价格
+                ￥100.00
               </div>
               <div
                 className="w-full h-full"

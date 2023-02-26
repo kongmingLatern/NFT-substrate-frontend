@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Drawer,
   DrawerBody,
@@ -7,15 +6,18 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
   useDisclosure,
 } from '@chakra-ui/react'
+
 import { Icon } from '@iconify-icon/react'
+import { useRef } from 'react'
+
 import Item from './Item'
 import Attention from '../common/Attention'
+
 export default function Shoppingcart() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
+  const btnRef = useRef()
   return (
     <span>
       <span className="flex" ref={btnRef} onClick={onOpen}>
@@ -49,6 +51,7 @@ export default function Shoppingcart() {
             </button>
           </div>
           <DrawerBody w="full">
+            {/* 购物车内的商品 */}
             <Item></Item>
           </DrawerBody>
 
@@ -56,17 +59,15 @@ export default function Shoppingcart() {
             <div className="w-full font-bold">
               <div className="float-left">总价</div>
               <button className="float-right hover:text-gray-500">
-                12355
+                ￥100.00
               </button>
             </div>
-            <Button
-              className="w-full bg-blue-400 mt-2"
-              variant="outline"
-              mx={2}
+            <button
+              className="w-full mt-2 btn btn-secondary"
               onClick={onClose}
             >
               购买
-            </Button>
+            </button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
