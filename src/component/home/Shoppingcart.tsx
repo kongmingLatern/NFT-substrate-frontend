@@ -19,8 +19,8 @@ export default function Shoppingcart() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
   return (
-    <span>
-      <span className="flex" ref={btnRef} onClick={onOpen}>
+    <span onClick={onOpen}>
+      <span className="flex" ref={btnRef}>
         <Icon
           icon="material-symbols:shopping-cart-rounded"
           color="rgba(204, 204, 204, 0.8)"
