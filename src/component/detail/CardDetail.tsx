@@ -10,7 +10,7 @@ export default function CardDetail() {
             New
           </div>
         </div>
-        <div className="break-words">
+        <div className="break-words overflow-scroll h-[200px]">
           pport server-side rendering. Currently in v4 all
           of the slides are positioned with position:
           absolute, which doesn't render the slides
