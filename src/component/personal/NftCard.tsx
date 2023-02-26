@@ -1,12 +1,15 @@
 import Image from '@/assets/1.jpg'
 import Divider from '../common/Divider'
-export default function KKNftCard() {
+export default function NftCard() {
   return (
     <>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
         return (
           <>
-            <div className="card card-side glass mb-2">
+            <div
+              className="card card-side glass mb-2"
+              key={index}
+            >
               <figure className="w-1/3">
                 <img
                   src={Image}

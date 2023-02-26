@@ -56,7 +56,7 @@ export default function NavSubmenu() {
         </Link>
       </li>
       <li>
-        <Shoppingcart />
+      <Shoppingcart />
         {/* <span>
           <Icon
             icon="material-symbols:shopping-cart-rounded"
@@ -67,6 +67,6 @@ export default function NavSubmenu() {
           购物车
         </span> */}
       </li>
-    </ul>
+      </ul>
   )
 }

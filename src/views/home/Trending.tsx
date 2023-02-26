@@ -36,7 +36,7 @@ export default function Trending() {
   return (
     <>
       <TableContainer
-        style={{ display: 'flex', padding: '2em' }}
+        style={{ display: 'flex', padding: '1em' }}
       >
         <Table variant="striped" className="mr-5">
           <Thead>
