@@ -1,9 +1,7 @@
-import React from 'react'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
 } from '@chakra-ui/react'
 export default function Bread() {
   return (

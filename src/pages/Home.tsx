@@ -1,7 +1,8 @@
 import Divider from '@/component/common/Divider'
 import Header from '@/component/common/Header'
-import Trending from '@/component/home/Trending'
+import Trending from '@/views/home/Trending'
 import Carousel from '@/component/common/Carousel'
+import Cardbox from '@/component/home/Cardbox'
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
 
       <Trending />
       <Divider />
+
+      <Cardbox />
     </>
   )
 }

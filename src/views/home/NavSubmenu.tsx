@@ -1,6 +1,6 @@
 import { Icon } from '@iconify-icon/react'
 import { Link } from 'react-router-dom'
-import Shoppingcart from './Shoppingcart'
+import Shoppingcart from '../../component/home/Shoppingcart'
 
 export default function NavSubmenu() {
   return (

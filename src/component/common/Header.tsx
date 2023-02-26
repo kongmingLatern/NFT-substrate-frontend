@@ -1,4 +1,4 @@
-import NavSubmenu from '../home/NavSubmenu'
+import NavSubmenu from '../../views/home/NavSubmenu'
 import UserInfo from '../home/UserInfo'
 import SearchInput from '../home/SearchInput'
 
