@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverBody,
-    PopoverArrow,
-  } from '@chakra-ui/react'
+import {Popover,PopoverTrigger,PopoverContent,PopoverBody,PopoverArrow} from '@chakra-ui/react'
 import { Icon } from '@iconify-icon/react'
 export default function Attention() {
   return (

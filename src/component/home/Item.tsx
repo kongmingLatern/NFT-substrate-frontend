@@ -4,7 +4,7 @@ import { Icon } from '@iconify-icon/react'
 export default function Item() {
   const[ changingvalue,setChangevalue]=useState(true)
   function black(){
-  setChangevalue(!changingvalue)
+    setChangevalue(!changingvalue)
   }
   return (
     <>
