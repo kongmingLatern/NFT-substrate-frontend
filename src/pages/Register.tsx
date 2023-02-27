@@ -14,6 +14,7 @@ import Facebox from '@/component/common/Facebox'
 import Space from '@/component/common/Space'
 import Img from '@/assets/gd1.png'
 import { Link } from 'react-router-dom'
+import Header from '@/component/common/Header'
 export default function Logon() {
   const [display, setdisplay] = useState(false)
   function changedisplay(value) {
@@ -21,11 +22,12 @@ export default function Logon() {
   }
   return (
     <>
+      <Header auth={false} text={'注册'} />
       <Card
         direction={{ base: 'column', sm: 'row' }}
         overflow="hidden"
         variant="outline"
-        className="w-[600px] absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] card border p-4"
+        className="w-[600px] absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] card border p-4 mt-[-65px]"
       >
         <Image
           objectFit="cover"
