@@ -15,26 +15,28 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Divider />
 
-      <Carousel />
-      <Divider />
+      <div className="mt-[60px]">
+        <Divider />
+        <Carousel />
+        <Divider />
 
-      <Title title={'Trending'} />
-      <Trending />
-      <Divider />
+        <Title title={'Trending'} />
+        <Trending />
+        <Divider />
 
-      <Title title={'Trending In Art'} />
-      <CardList />
+        <Title title={'Trending In Art'} />
+        <CardList />
 
-      <button
-        className="btn"
-        onClick={() => setData([1, 2, 3])}
-      >
-        setNum
-      </button>
+        <button
+          className="btn"
+          onClick={() => setData([1, 2, 3])}
+        >
+          setNum
+        </button>
 
-      <Echarts type="line" data={data} />
+        <Echarts type="line" data={data} />
+      </div>
     </>
   )
 }

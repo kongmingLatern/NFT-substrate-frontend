@@ -7,11 +7,13 @@ export default function Merchandise() {
   return (
     <>
       <Header />
-      <Divider />
-      <div className="mt-10 max-w-screen-lg mx-auto">
-        <div className="flex">
-          <DetailCard />
-          <CardInfo />
+      <div className="mt-[60px]">
+        <Divider />
+        <div className="mt-10 max-w-screen-lg mx-auto">
+          <div className="flex">
+            <DetailCard />
+            <CardInfo />
+          </div>
         </div>
       </div>
     </>

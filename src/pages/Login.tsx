@@ -19,17 +19,24 @@ import {
 } from '@chakra-ui/react'
 import Space from '@/component/common/Space'
 import Img from '@/assets/gd1.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from '@/component/common/Header'
 import { videoConstraints } from '@/face/const'
 import Webcam from 'react-webcam'
 import { getFaceDetector, loadModels } from '@/face/model'
 import { faceapi } from '@/face'
 import Divider from '@/component/common/Divider'
-export default function Login() {
+import styles from '@/assets/img.module.css'
+interface LoginType {
+  name?: string
+}
+export default function Login({
+  name = '登录',
+}: LoginType) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const webcamRef = useRef(null)
   const canvas = useRef<HTMLCanvasElement>(null)
+  const navigate = useNavigate()
   const [imgSrc, setImgSrc] = useState('')
   const {
     getCurrentFaceDetectionNet,
@@ -73,74 +80,84 @@ export default function Login() {
     const imageSrc = webcamRef.current.getScreenshot()
     setImgSrc(imageSrc)
     webcamRef.current.stream = false
+    navigate('/home')
   }, [webcamRef])
+
   return (
     <>
-      <Header auth={false} text={'登录'} />
-      <Card
-        direction={{ base: 'column', sm: 'row' }}
-        overflow="hidden"
-        variant="outline"
-        className="w-[600px] absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] card border p-4 mt-[-65px]"
-      >
-        <Image
-          objectFit="cover"
-          maxW={{ base: '100%', sm: '200px' }}
-          src={Img}
-          alt="Cover"
-        />
+      <Header auth={false} text={name} />
+      <Divider />
+      <div className={styles.img}>
+        <Card
+          direction={{ base: 'column', sm: 'row' }}
+          overflow="hidden"
+          variant="outline"
+          className="w-[600px] absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] card border p-4 "
+        >
+          <Image
+            objectFit="cover"
+            maxW={{ base: '100%', sm: '200px' }}
+            src={Img}
+            alt="Cover"
+          />
 
-        <Stack>
-          <CardBody className="text-center justify-center">
-            <Heading size="md" className="mb-3">
-              登录
-            </Heading>
+          <Stack>
+            <CardBody className="text-center justify-center">
+              <Heading size="md" className="mb-3">
+                {name}
+              </Heading>
 
-            <Space size={20} direction={'vertical'}>
-              <label className="flex items-center whitespace-nowrap">
-                账号：
-                <Input
-                  opacity={0.5}
-                  placeholder={'请输入账号'}
-                />
-              </label>
-              <label className="flex items-center whitespace-nowrap">
-                密码：
-                <Input
-                  type={'password'}
-                  w={72}
-                  opacity={0.5}
-                  placeholder={'请输入密码'}
-                />
-              </label>
-            </Space>
-          </CardBody>
+              <Space size={20} direction={'vertical'}>
+                <label className="flex items-center whitespace-nowrap">
+                  账号：
+                  <Input
+                    opacity={0.5}
+                    placeholder={'请输入账号'}
+                  />
+                </label>
+                <label className="flex items-center whitespace-nowrap">
+                  密码：
+                  <Input
+                    type={'password'}
+                    w={72}
+                    opacity={0.5}
+                    placeholder={'请输入密码'}
+                  />
+                </label>
+              </Space>
+            </CardBody>
 
-          <CardFooter className="justify-center">
-            <Space direction="horizontal">
-              <Button
-                w={24}
-                display={'block'}
-                mt={2}
-                variant="solid"
-                colorScheme="blue"
-              >
-                <Link to={'/register'}>去注册</Link>
-              </Button>
-              <Button
-                w={24}
-                display={'block'}
-                mt={2}
-                variant="solid"
-                colorScheme="whatsapp"
-                onClick={() => onOpen()}
-              >
-                登录
-              </Button>
-            </Space>
-          </CardFooter>
-        </Stack>
-      </Card>
+            <CardFooter className="justify-center">
+              <Space direction="horizontal">
+                <Button
+                  w={24}
+                  display={'block'}
+                  mt={2}
+                  variant="solid"
+                  colorScheme="blue"
+                >
+                  {name === '登录' ? (
+                    <Link to={'/register'}>去注册</Link>
+                  ) : (
+                    <Link to={'/login'}>去登录</Link>
+                  )}
+                </Button>
+                <Button
+                  w={24}
+                  display={'block'}
+                  mt={2}
+                  variant="solid"
+                  colorScheme="whatsapp"
+                  onClick={() => onOpen()}
+                >
+                  {name}
+                </Button>
+              </Space>
+            </CardFooter>
+          </Stack>
+        </Card>
+      </div>
+
       {isOpen ? (
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%]">
           <Modal isOpen={isOpen} onClose={onClose}>
