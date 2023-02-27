@@ -1,6 +1,8 @@
 import Create from '@/pages/Create'
 import Detail from '@/pages/Detail'
 import Home from '@/pages/Home'
+import Login from '@/pages/Login'
+import Logon from '@/pages/Login'
 import Personal from '@/pages/Personal'
 import {
   createBrowserRouter,
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '/detail',
