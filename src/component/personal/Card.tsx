@@ -63,7 +63,7 @@ export default function PersonalCard() {
         </aside>
       </div>
       {/* 右侧 */}
-      <aside className="card-body ml-5 w-auto border">
+      <aside className="card-body ml-5 w-auto border overflow-y-scroll h-[100vh]">
         <h2 className="card-title font-sans">
           My Personal Property
         </h2>
