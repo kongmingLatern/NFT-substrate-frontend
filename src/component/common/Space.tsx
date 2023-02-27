@@ -2,7 +2,7 @@ import React from 'react'
 
 interface SpaceType {
   size?: number | 'small' | 'medium' | 'large'
-  direction: 'horizontal' | 'vertical'
+  direction?: 'horizontal' | 'vertical'
   children: React.ReactNode
 }
 

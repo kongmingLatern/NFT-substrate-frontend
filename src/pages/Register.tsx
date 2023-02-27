@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import {
   Input,
   Button,
@@ -8,18 +8,71 @@ import {
   Heading,
   Stack,
   Image,
-  Text,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from '@chakra-ui/react'
-import Facebox from '@/component/common/Facebox'
 import Space from '@/component/common/Space'
 import Img from '@/assets/gd1.png'
 import { Link } from 'react-router-dom'
 import Header from '@/component/common/Header'
-export default function Logon() {
-  const [display, setdisplay] = useState(false)
-  function changedisplay(value) {
-    setdisplay(value)
+import { videoConstraints } from '@/face/const'
+import Webcam from 'react-webcam'
+import { getFaceDetector, loadModels } from '@/face/model'
+import { faceapi } from '@/face'
+export default function Login() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const webcamRef = useRef(null)
+  const canvas = useRef<HTMLCanvasElement>(null)
+  const [imgSrc, setImgSrc] = useState('')
+  const {
+    getCurrentFaceDetectionNet,
+    getFaceDetectorOptions,
+    isFaceDetectionModelLoaded,
+  } = getFaceDetector()
+
+  async function onPlay() {
+    if (!isFaceDetectionModelLoaded()) {
+      await loadModels(getCurrentFaceDetectionNet)
+    } else if (
+      webcamRef.current.video.paused ||
+      webcamRef.current.video.ended
+    ) {
+      return setTimeout(() => onPlay())
+    }
+
+    const options = getFaceDetectorOptions()
+
+    const result = await faceapi.detectSingleFace(
+      webcamRef.current.video,
+      options
+    )
+    console.log(result)
+    if (result) {
+      const dims = faceapi.matchDimensions(
+        canvas.current,
+        webcamRef.current.video,
+        true
+      )
+      faceapi.draw.drawDetections(
+        canvas.current,
+        faceapi.resizeResults(result, dims)
+      )
+    }
+
+    setTimeout(() => onPlay())
   }
+
+  const capture = useCallback(async () => {
+    const imageSrc = webcamRef.current.getScreenshot()
+    setImgSrc(imageSrc)
+    webcamRef.current.stream = false
+  }, [webcamRef])
   return (
     <>
       <Header auth={false} text={'注册'} />
@@ -33,65 +86,112 @@ export default function Logon() {
           objectFit="cover"
           maxW={{ base: '100%', sm: '200px' }}
           src={Img}
-          alt="Caffe Latte"
+          alt="Cover"
         />
 
         <Stack>
           <CardBody className="text-center justify-center">
-            <Heading size="md">注册</Heading>
+            <Heading size="md" className="mb-3">
+              注册
+            </Heading>
 
-            <Text py="2">
-              <Space size={20} direction={'vertical'}>
-                <label className="flex items-center whitespace-nowrap">
-                  账号：
-                  <Input
-                    opacity={0.5}
-                    placeholder={'请输入账号'}
-                  />
-                </label>
-                <label className="flex items-center whitespace-nowrap">
-                  密码：
-                  <Input
-                    type={'password'}
-                    w={72}
-                    opacity={0.5}
-                    placeholder={'请输入密码'}
-                  />
-                </label>
-              </Space>
-            </Text>
+            <Space size={20} direction={'vertical'}>
+              <label className="flex items-center whitespace-nowrap">
+                账号：
+                <Input
+                  opacity={0.5}
+                  placeholder={'请输入账号'}
+                />
+              </label>
+              <label className="flex items-center whitespace-nowrap">
+                密码：
+                <Input
+                  type={'password'}
+                  w={72}
+                  opacity={0.5}
+                  placeholder={'请输入密码'}
+                />
+              </label>
+            </Space>
           </CardBody>
 
           <CardFooter className="justify-center">
-            <div className="flex justify-between">
-              <Space direction="horizontal">
-                <Button
-                  w={24}
-                  display={'block'}
-                  mt={2}
-                  onClick={() => setdisplay(true)}
-                  variant="solid"
-                  colorScheme="blue"
-                >
-                  <Link to={'/login'}>注册</Link>
-                </Button>
-                <Button
-                  w={24}
-                  display={'block'}
-                  mt={2}
-                  variant="solid"
-                  colorScheme="whatsapp"
-                >
-                  <Link to={'/login'}>去登陆</Link>
-                </Button>
-              </Space>
-            </div>
+            <Space direction="horizontal">
+              <Button
+                w={24}
+                display={'block'}
+                mt={2}
+                variant="solid"
+                colorScheme="blue"
+              >
+                <Link to={'/login'}>去登录</Link>
+                {/* <Link to={'/home'}>登录</Link> */}
+              </Button>
+              <Button
+                w={24}
+                display={'block'}
+                mt={2}
+                variant="solid"
+                colorScheme="whatsapp"
+                onClick={() => onOpen()}
+              >
+                注册
+              </Button>
+            </Space>
           </CardFooter>
         </Stack>
       </Card>
-      <div style={{ display: display ? 'block' : 'none' }}>
-        <Facebox changedisplay={changedisplay} />
-      </div>
+      {isOpen ? (
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%]">
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>人脸识别</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody className="relative flex h-[300px] justify-center">
+                <Webcam
+                  onLoadedMetadata={() => onPlay()}
+                  audio={false}
+                  height={300}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  width={300}
+                  videoConstraints={videoConstraints}
+                  autoPlay
+                  className="rounded-full"
+                />
+                {/* 人脸信息获取框 */}
+                <canvas
+                  ref={canvas}
+                  width={300}
+                  height={300}
+                  className="absolute"
+                />
+              </ModalBody>
+
+              <ModalFooter>
+                <Space>
+                  <Button
+                    colorScheme="purple"
+                    onClick={() => capture()}
+                  >
+                    点击拍照
+                  </Button>
+                  <Button
+                    colorScheme="blue"
+                    mr={3}
+                    onClick={onClose}
+                  >
+                    关闭
+                  </Button>
+                </Space>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }

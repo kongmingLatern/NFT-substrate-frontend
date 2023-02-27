@@ -5,7 +5,7 @@ export const enum FaceDetectionNet {
   TINY_FACE_DETECTOR = 'tiny_face_detector',
 }
 export const videoConstraints: VideoConstraintsType = {
-  width: 640,
-  height: 360,
+  width: 300,
+  height: 300,
   facingMode: 'user',
 }
