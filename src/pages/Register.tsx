@@ -36,7 +36,7 @@ export default function Logon() {
 
         <Stack>
           <CardBody className="text-center justify-center">
-            <Heading size="md">登录</Heading>
+            <Heading size="md">注册</Heading>
 
             <Text py="2">
               <Space size={20} direction={'vertical'}>
@@ -71,7 +71,7 @@ export default function Logon() {
                   variant="solid"
                   colorScheme="blue"
                 >
-                  <Link to={'/home'}>登录</Link>
+                  <Link to={'/login'}>注册</Link>
                 </Button>
                 <Button
                   w={24}
@@ -80,7 +80,7 @@ export default function Logon() {
                   variant="solid"
                   colorScheme="whatsapp"
                 >
-                  <Link to={'/register'}>注册</Link>
+                  <Link to={'/login'}>去登陆</Link>
                 </Button>
               </Space>
             </div>
