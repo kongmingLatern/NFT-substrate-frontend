@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '@chakra-ui/react'
 const Tablefooter: React.FC<any> = (props: any) => {
   return (
     <div>
@@ -13,10 +12,10 @@ const Tablefooter: React.FC<any> = (props: any) => {
             {props.total}
           </label>
         </div>
-        <div className="w-36 float-right mt-6">
-          <Button w={'full'} bg={'red.400'}>
+        <div className="w-auto float-right mt-6">
+          <button className="btn btn-secondary w-36">
             提交
-          </Button>
+          </button>
         </div>
       </div>
     </div>

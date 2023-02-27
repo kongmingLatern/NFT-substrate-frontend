@@ -2,9 +2,60 @@ import React, { useEffect, useState } from 'react'
 import Tableitem from '../../component/common/Tableitem'
 import Tablehead from '../../component/common/Tablehead'
 import Tablefooter from '../../component/common/Tablefooter'
-export default function Table() {
+import { Table, Tfoot } from '@chakra-ui/react'
+export default function TableComponent() {
   const [total, settotal] = useState(0)
   const [data, setdata] = useState([
+    {
+      id: '1',
+      count: 1,
+      price: 1,
+    },
+    {
+      id: '2',
+      count: 1,
+      price: 2,
+    },
+    {
+      id: '1',
+      count: 1,
+      price: 1,
+    },
+    {
+      id: '2',
+      count: 1,
+      price: 2,
+    },
+    {
+      id: '1',
+      count: 1,
+      price: 1,
+    },
+    {
+      id: '2',
+      count: 1,
+      price: 2,
+    },
+    {
+      id: '1',
+      count: 1,
+      price: 1,
+    },
+    {
+      id: '2',
+      count: 1,
+      price: 2,
+    },
+    {
+      id: '1',
+      count: 1,
+      price: 1,
+    },
+    {
+      id: '2',
+      count: 1,
+      price: 2,
+    },
     {
       id: '1',
       count: 1,
@@ -40,11 +91,11 @@ export default function Table() {
   }, [data])
   return (
     <div>
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full">
+      <div className="overflow-x-auto w-[60vw] h-[50vh] mx-auto">
+        <Table className="table mx-auto">
           {/* head */}
           <thead>
-            <tr className="text-center w-full">
+            <tr className="text-center">
               <Tablehead />
             </tr>
           </thead>
@@ -52,7 +103,7 @@ export default function Table() {
             {/* row 1 */}
             {data.map(item => {
               return (
-                <tr className="w-full" key={item.id}>
+                <tr key={item.id}>
                   <Tableitem
                     addcount={addcount}
                     data={item}
@@ -62,11 +113,12 @@ export default function Table() {
               )
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
-      <div className="w-full">
+
+      <footer className="w-[60vw] h-[50vh] mx-auto">
         <Tablefooter total={total} />
-      </div>
+      </footer>
     </div>
   )
 }

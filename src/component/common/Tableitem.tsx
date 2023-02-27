@@ -25,8 +25,14 @@ const Tableitem: React.FC<any> = (props: any) => {
           </div>
         </div>
       </td>
-      <td>
-        <span className="badge badge-ghost badge-sm">
+      <td className="inline-block w-[30vw] text-ellipsis ">
+        <span className="h-[80px] flex items-center overflow-hidden">
+          Desktop Support Technician Desktop Support
+          Technician Desktop Support Technician Desktop
+          Support Technician Desktop Support Technician
+          Desktop Support Technician Desktop Support
+          Technician Desktop Support Technician Desktop
+          Support Technician Desktop Support Technician
           Desktop Support Technician
         </span>
       </td>
