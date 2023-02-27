@@ -14,9 +14,17 @@ import { useRef } from 'react'
 
 import Item from './Item'
 import Attention from '../common/Attention'
+import { useNavigate } from 'react-router-dom'
 
 export default function Shoppingcart() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const navigate = useNavigate()
+
+  function handleNavigate() {
+    onClose()
+    navigate('/transaction')
+  }
+
   const btnRef = useRef()
   return (
     <span onClick={onOpen}>
@@ -64,7 +72,7 @@ export default function Shoppingcart() {
             </div>
             <button
               className="w-full mt-2 btn btn-secondary"
-              onClick={onClose}
+              onClick={handleNavigate}
             >
               购买
             </button>

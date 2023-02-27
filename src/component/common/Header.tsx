@@ -11,7 +11,7 @@ export default function Header({
   text = '',
 }: HeaderType) {
   return (
-    <div className="navbar text-black justify-between fixed top-0 left-0 bg-white z-10">
+    <div className="navbar text-black justify-between fixed top-0 left-0 bg-white z-20">
       <div className="w-[50%]">
         <button className="btn btn-ghost normal-case text-xl font-sans">
           NFT 交易系统&nbsp;
