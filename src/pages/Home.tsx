@@ -3,6 +3,7 @@ import Header from '@/component/common/Header'
 import Trending from '@/views/home/Trending'
 import Carousel from '@/component/common/Carousel'
 import Title from '@/component/common/Title'
+import Tabs from '@/component/common/Tabs'
 import CardList from '@/views/home/CardList'
 import Echarts from '@/echarts/Echarts'
 import { useState } from 'react'
@@ -12,12 +13,20 @@ export default function Home() {
     820, 932, 901, 934, 1290, 1330, 1320,
   ])
 
+  const tabList = ['All', 'Art', 'Music', 'Video']
+  const tabPanelList = ['All', 'Art', 'Music', 'Video']
+
   return (
     <>
       <Header />
 
       <div className="mt-[60px]">
         <Divider />
+        <Tabs
+          className={'px-4'}
+          tabList={tabList}
+          tabPanelList={tabPanelList}
+        />
         <Carousel />
         <Divider />
 
