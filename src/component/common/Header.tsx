@@ -1,6 +1,7 @@
 import NavSubmenu from '../../views/home/NavSubmenu'
 import UserInfo from '../home/UserInfo'
 import SearchInput from '../home/SearchInput'
+import Button from './Button'
 interface HeaderType {
   auth?: boolean
   text?: string
@@ -23,11 +24,13 @@ export default function Header({
         </button>
         <div className="form-control w-[100%] relative">
           {auth ? (
-            <SearchInput
-              search={value => {
-                console.log('search', value)
-              }}
-            />
+            <>
+              <SearchInput
+                search={value => {
+                  console.log('search', value)
+                }}
+              />
+            </>
           ) : (
             ''
           )}
