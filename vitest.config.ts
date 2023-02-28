@@ -5,6 +5,9 @@ export default defineConfig({
     transformMode: {
       web: [/\.[jt]sx$/],
     },
+    environment: 'jsdom',
+    setupFiles: './vitest-setup.ts',
+    threads: false,
   },
   resolve: {
     alias: {
