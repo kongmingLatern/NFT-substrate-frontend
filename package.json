@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx --fix --quiet ./src",
-    "test": "vitest"
+    "test": "vitest --environment=jsdom"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",
