@@ -43,9 +43,6 @@ export default function Header({
             {auth ? '' : ` > ${text}`}
           </span>
         </button>
-        <div className="form-control w-[100%] relative">
-          {auth ? <SearchInput /> : ''}
-        </div>
       </div>
       {auth ? (
         <div className="gap-2">

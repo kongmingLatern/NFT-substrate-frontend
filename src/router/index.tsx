@@ -7,6 +7,7 @@ import Logon from '@/pages/Login'
 import Personal from '@/pages/Personal'
 import Register from '@/pages/Register'
 import Transaction from '@/pages/Transaction'
+import Main from '@/views/admin/Main'
 import {
   createBrowserRouter,
   Navigate,
@@ -53,5 +54,23 @@ export const router = createBrowserRouter([
   {
     path: '/admin',
     element: <Admin />,
+    children: [
+      {
+        path: 'user',
+        element: <Main />,
+      },
+      {
+        path: 'nft',
+        element: <Main />,
+      },
+      {
+        path: 'setting',
+        element: <Main />,
+      },
+      {
+        path: 'upgrade',
+        element: <Main />,
+      },
+    ],
   },
 ])
