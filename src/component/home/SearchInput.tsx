@@ -1,4 +1,3 @@
-import { Input } from '@chakra-ui/react'
 import { Icon } from '@iconify-icon/react'
 
 export default function SearchInput({ search }) {
@@ -9,7 +8,7 @@ export default function SearchInput({ search }) {
         placeholder="请输入要查找的物品"
         className="input input-bordered text-black"
         onKeyDown={e => {
-          return e.code === 'Enter' ? search() : null
+          return e.code === 'Enter' ? search(e.target.value) : null
         }}
       />
       <Icon

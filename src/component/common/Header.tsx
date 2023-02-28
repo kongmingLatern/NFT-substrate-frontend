@@ -24,8 +24,8 @@ export default function Header({
         <div className="form-control w-[100%] relative">
           {auth ? (
             <SearchInput
-              search={() => {
-                console.log('search')
+              search={value => {
+                console.log('search', value)
               }}
             />
           ) : (
