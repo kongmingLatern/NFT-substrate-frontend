@@ -22,7 +22,15 @@ export default function Header({
           </span>
         </button>
         <div className="form-control w-[100%] relative">
-          {auth ? <SearchInput /> : ''}
+          {auth ? (
+            <SearchInput
+              search={() => {
+                console.log('search')
+              }}
+            />
+          ) : (
+            ''
+          )}
         </div>
       </div>
       {auth ? (
