@@ -25,8 +25,8 @@ export default function Button({
     <button
       className={
         `${
-          baseClass !== className ? baseClass : ''
-        } ${className}` ||
+          baseClass !== className ? baseClass + ' ' : ''
+        }${className}` ||
         (type ? `'btn btn-${type}` : baseClass)
       }
       onClick={onClick}
