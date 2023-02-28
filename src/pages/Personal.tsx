@@ -1,6 +1,5 @@
-import Divider from '@/component/common/Divider'
 import Header from '@/component/common/Header'
-import PersonalCard from '@/component/personal/Card'
+import PersonalCard from '@/views/personal/Card'
 
 export default function Personal() {
   return (

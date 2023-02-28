@@ -1,8 +1,8 @@
 import Echarts from '@/echarts/Echarts'
-import DetailIcon from './DetailIcon'
-import Operation from './Operation'
-import SalesTime from './SalesTime'
-import UserTable from './UserTable'
+import DetailIcon from '../../component/detail/DetailIcon'
+import Operation from '../../component/detail/Operation'
+import SalesTime from '../../component/detail/SalesTime'
+import UserTable from '../../component/detail/UserTable'
 
 export default function CardInfo() {
   return (

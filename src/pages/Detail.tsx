@@ -1,9 +1,9 @@
 import Divider from '@/component/common/Divider'
 import Header from '@/component/common/Header'
-import DetailCard from '@/component/detail/CardDetail'
-import CardInfo from '@/component/detail/CardInfo'
+import CardDetail from '@/views/detail/CardDetail'
+import CardInfo from '@/views/detail/CardInfo'
 
-export default function Merchandise() {
+export default function Detail() {
   return (
     <>
       <Header />
@@ -11,7 +11,7 @@ export default function Merchandise() {
         <Divider />
         <div className="mt-10 max-w-screen-lg mx-auto">
           <div className="flex">
-            <DetailCard />
+            <CardDetail />
             <CardInfo />
           </div>
         </div>

@@ -1,5 +1,4 @@
 import {
-  SimpleGrid,
   Tabs,
   Tab,
   TabList,
@@ -7,7 +6,7 @@ import {
   TabPanels,
 } from '@chakra-ui/react'
 import Image from '@/assets/gd1.png'
-import NftCard from './NftCard'
+import NftCard from '../../component/personal/NftCard'
 import { Icon } from '@iconify-icon/react'
 import { Link } from 'react-router-dom'
 

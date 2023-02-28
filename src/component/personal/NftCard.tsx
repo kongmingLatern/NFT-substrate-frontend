@@ -1,15 +1,13 @@
 import Image from '@/assets/1.jpg'
+import { Fragment } from 'react'
 import Divider from '../common/Divider'
 export default function NftCard() {
   return (
     <>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
         return (
-          <>
-            <div
-              className="card card-side glass mb-2"
-              key={index}
-            >
+          <Fragment key={index}>
+            <div className="card card-side glass mb-2">
               <figure className="w-1/3">
                 <img
                   src={Image}
@@ -35,7 +33,7 @@ export default function NftCard() {
               </div>
             </div>
             <Divider />
-          </>
+          </Fragment>
         )
       })}
     </>
