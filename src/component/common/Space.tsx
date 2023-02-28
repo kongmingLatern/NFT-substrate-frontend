@@ -18,7 +18,9 @@ export default function Space({
       marginRight:
         direction === 'horizontal' ? size + 'px' : '0',
     }
-    return defaultStyle
+    return {
+      ...defaultStyle,
+    }
   }
 
   return (

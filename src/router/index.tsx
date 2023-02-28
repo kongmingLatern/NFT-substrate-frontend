@@ -1,3 +1,4 @@
+import Admin from '@/pages/Admin'
 import Create from '@/pages/Create'
 import Detail from '@/pages/Detail'
 import Home from '@/pages/Home'
@@ -48,5 +49,9 @@ export const router = createBrowserRouter([
   {
     path: '/transaction',
     element: <Transaction />,
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
   },
 ])
