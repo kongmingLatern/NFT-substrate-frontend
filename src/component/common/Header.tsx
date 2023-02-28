@@ -1,7 +1,6 @@
 import NavSubmenu from '../../views/home/NavSubmenu'
 import UserInfo from '../home/UserInfo'
 import SearchInput from '../home/SearchInput'
-import Button from './Button'
 interface HeaderType {
   auth?: boolean
   text?: string
