@@ -1,4 +1,9 @@
-import React, { useMemo, useState, MouseEvent } from 'react'
+import React, {
+  useMemo,
+  useState,
+  MouseEvent,
+  useEffect,
+} from 'react'
 import { PaintBoard } from './utils/paintBoard'
 import { CANVAS_ELE_TYPE } from './utils/constants'
 import ToolPanel from './components/toolPanel'

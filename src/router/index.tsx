@@ -3,7 +3,6 @@ import Create from '@/pages/Create'
 import Detail from '@/pages/Detail'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
-import Logon from '@/pages/Login'
 import Personal from '@/pages/Personal'
 import Register from '@/pages/Register'
 import Transaction from '@/pages/Transaction'
@@ -19,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to="/home" />,
+        element: <Navigate to="/login" />,
       },
     ],
   },
@@ -55,6 +54,10 @@ export const router = createBrowserRouter([
     path: '/admin',
     element: <Admin />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/admin/user" />,
+      },
       {
         path: 'user',
         element: <Main />,
