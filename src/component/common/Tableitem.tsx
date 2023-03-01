@@ -1,17 +1,14 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
 import Image from '@/assets/gd1.png'
+import Input from './Input'
 const Tableitem: React.FC<any> = (props: any) => {
   const { count, id, price } = props.data
 
   return (
     <>
       <td>
-        <input
-          type="checkbox"
-          checked
-          className="checkbox"
-        />
+        <Input type="checkbox" checked />
       </td>
       <td className="text-center">hhhh</td>
       <td>
