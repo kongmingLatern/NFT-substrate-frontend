@@ -6,6 +6,13 @@ const Tableitem: React.FC<any> = (props: any) => {
 
   return (
     <>
+      <td>
+        <input
+          type="checkbox"
+          checked
+          className="checkbox"
+        />
+      </td>
       <td className="text-center">hhhh</td>
       <td>
         <div className="flex items-center space-x-3">
@@ -25,19 +32,19 @@ const Tableitem: React.FC<any> = (props: any) => {
           </div>
         </div>
       </td>
-      <td className="inline-block w-[30vw] text-ellipsis ">
-        <span className="h-[80px] flex items-center overflow-hidden">
-          Desktop Support Technician Desktop Support
-          Technician Desktop Support Technician Desktop
-          Support Technician Desktop Support Technician
-          Desktop Support Technician Desktop Support
-          Technician Desktop Support Technician Desktop
-          Support Technician Desktop Support Technician
-          Desktop Support Technician
-        </span>
+      <td className="h-[80px] leading-[45px] inline-block w-[20vw] overflow-hidden text-ellipsis ">
+        {/* <span className="h-[80px] flex items-center  overflow-hidden text-ellipsis"> */}
+        Desktop Support Technician Desktop Support
+        Technician Desktop Support Technician Desktop
+        Support Technician Desktop Support Technician
+        Desktop Support Technician Desktop Support
+        Technician Desktop Support Technician Desktop
+        Support Technician Desktop Support Technician
+        Desktop Support Technician
+        {/* </span> */}
       </td>
       <td className="w-10">
-        <label htmlFor="">{price}</label>
+        <label>￥{price}</label>
       </td>
       <td className="w-10">
         <Button onClick={() => props.subcount(id)}>

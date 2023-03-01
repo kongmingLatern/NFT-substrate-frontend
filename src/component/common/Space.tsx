@@ -3,7 +3,7 @@ import React from 'react'
 interface SpaceType {
   size?: number | 'small' | 'medium' | 'large'
   direction?: 'horizontal' | 'vertical'
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 export default function Space({

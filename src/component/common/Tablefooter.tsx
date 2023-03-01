@@ -6,10 +6,9 @@ const Tablefooter: React.FC<any> = (props: any) => {
         <div className="text-lg">
           总价:{' '}
           <label
-            className="text-2xl text-red-500"
-            htmlFor=""
+            className="text-2xl text-red-500 font-bold"
           >
-            {props.total}
+            {'￥' + props.total}
           </label>
         </div>
         <div className="w-auto float-right mt-6">

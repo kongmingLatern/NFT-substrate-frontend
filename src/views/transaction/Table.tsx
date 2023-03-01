@@ -116,7 +116,7 @@ export default function TableComponent() {
         </Table>
       </div>
 
-      <footer className="w-[60vw] h-[50vh] mx-auto">
+      <footer className="w-[60vw] h-[100%] mx-auto">
         <Tablefooter total={total} />
       </footer>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 
 interface ButtonType {
   type?: 'primary' | 'secondary'

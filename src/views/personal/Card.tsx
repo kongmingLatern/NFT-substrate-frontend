@@ -43,14 +43,14 @@ export default function PersonalCard() {
                   icon="ri:user-follow-line"
                   color="#ccc"
                 />
-                <div className="ml-2">
+                <div className="ml-2 whitespace-nowrap">
                   3{' '}
                   <Link to={''} className="text-blue-400">
                     followers
                   </Link>
                 </div>
                 <div className="divider lg:divider-horizontal lg:mx-0"></div>
-                <div className="ml-2">
+                <div className="ml-2 whitespace-nowrap">
                   3{' '}
                   <Link to={''} className="text-red-400">
                     followings
