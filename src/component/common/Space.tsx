@@ -26,20 +26,22 @@ export default function Space({
   return (
     <>
       {}
-      {React.Children.map(children, (child, index) => {
-        return (
-          <div
-            key={index}
-            style={
-              index !== React.Children.count(children) - 1
-                ? getStyle()
-                : {}
-            }
-          >
-            {child}
-          </div>
-        )
-      })}
+      {React.Children.toArray(children).map(
+        (child, index) => {
+          return (
+            <div
+              key={index}
+              style={
+                index !== React.Children.count(children) - 1
+                  ? getStyle()
+                  : {}
+              }
+            >
+              {child}
+            </div>
+          )
+        }
+      )}
     </>
   )
 }
