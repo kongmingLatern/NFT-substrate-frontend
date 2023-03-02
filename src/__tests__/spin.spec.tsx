@@ -11,7 +11,7 @@ describe('spin basic function', () => {
           class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center items-center"
         >
           <div
-            class="animate-spin rounded-full border-t-2 border-b-2 border-gray-900 h-16 w-16 "
+            class="animate-spin rounded-full border-t-2 border-b-2 border-gray-900 h-16 w-16"
           />
         </div>
         123
@@ -65,7 +65,7 @@ describe('spin size function', () => {
           class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center items-center"
         >
           <div
-            class="animate-spin rounded-full border-t-2 border-b-2 border-gray-900 h-16 w-16 "
+            class="animate-spin rounded-full border-t-2 border-b-2 border-gray-900 h-16 w-16"
           />
         </div>
       </DocumentFragment>

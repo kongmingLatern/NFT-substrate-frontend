@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { useEffect } from 'react'
 
 interface ButtonType {
@@ -23,12 +24,11 @@ export default function Button({
   }, [loading])
   return (
     <button
-      className={
-        `${
-          baseClass !== className ? baseClass + ' ' : ''
-        }${className}` ||
-        (type ? `'btn btn-${type}` : baseClass)
-      }
+      className={classNames(
+        'btn',
+        type ? `btn-${type}` : '',
+        baseClass !== className ? className : ''
+      )}
       onClick={onClick}
     >
       {loading ? 'loading...' : value || children}

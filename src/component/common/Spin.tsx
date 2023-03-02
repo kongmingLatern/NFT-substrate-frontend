@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import React from 'react'
 
 interface SpinProps
@@ -29,11 +30,10 @@ export default function Spin({
               render()
             ) : (
               <div
-                className={
-                  size
-                    ? `${className} ${sizeClassName[size]} `
-                    : `${className}`
-                }
+                className={classNames(
+                  className,
+                  size ? sizeClassName[size] : ''
+                )}
               ></div>
             )}
           </div>
