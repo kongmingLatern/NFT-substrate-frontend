@@ -1,36 +1,54 @@
 import Spin from '@/component/common/Spin'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 describe('spin basic function', () => {
-  it('render loading... when loading', () => {
-    const { asFragment, getByText } = render(
-      <Spin loading>123</Spin>
-    )
+  it('render loading style and children when loading', () => {
+    const { asFragment } = render(<Spin loading>123</Spin>)
 
-    expect(getByText('loading...')).toBeInTheDocument()
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
         <div
-          class="flex justify-center items-center h-screen"
+          class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center items-center"
         >
           <div
             class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"
-          >
-            loading...
-          </div>
+          />
         </div>
+        123
       </DocumentFragment>
     `)
   })
-  it('render children when loading return false', () => {
-    const { asFragment, getByText } = render(
+  it('render child when loading return false', () => {
+    const { asFragment } = render(
       <Spin loading={false}>123</Spin>
     )
 
-    expect(getByText('123')).toBeInTheDocument()
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
         123
+      </DocumentFragment>
+    `)
+  })
+  it('render children', () => {
+    const { asFragment } = render(
+      <Spin loading={false}>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+      </Spin>
+    )
+
+    expect(asFragment()).toMatchInlineSnapshot(`
+      <DocumentFragment>
+        <div>
+          123
+        </div>
+        <div>
+          123
+        </div>
+        <div>
+          123
+        </div>
       </DocumentFragment>
     `)
   })

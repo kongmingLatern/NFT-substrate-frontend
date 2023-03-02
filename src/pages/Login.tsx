@@ -27,6 +27,7 @@ import { getFaceDetector, loadModels } from '@/face/model'
 import { faceapi } from '@/face'
 import Divider from '@/component/common/Divider'
 import styles from '@/assets/img.module.css'
+import Spin from '@/component/common/Spin'
 interface LoginType {
   name?: string
 }
@@ -37,6 +38,7 @@ export default function Login({
   const webcamRef = useRef(null)
   const canvas = useRef<HTMLCanvasElement>(null)
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(true)
   const [imgSrc, setImgSrc] = useState('')
   const {
     getCurrentFaceDetectionNet,
@@ -46,6 +48,7 @@ export default function Login({
 
   async function onPlay() {
     if (!isFaceDetectionModelLoaded()) {
+      setLoading(false)
       await loadModels(getCurrentFaceDetectionNet)
     } else if (
       webcamRef.current.video.paused ||
@@ -166,24 +169,26 @@ export default function Login({
               <ModalHeader>人脸识别</ModalHeader>
               <ModalCloseButton />
               <ModalBody className="relative flex h-[300px] justify-center">
-                <Webcam
-                  onLoadedMetadata={() => onPlay()}
-                  audio={false}
-                  height={300}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  width={300}
-                  videoConstraints={videoConstraints}
-                  autoPlay
-                  className="rounded-full"
-                />
-                {/* 人脸信息获取框 */}
-                <canvas
-                  ref={canvas}
-                  width={300}
-                  height={300}
-                  className="absolute"
-                />
+                <Spin loading={loading}>
+                  <Webcam
+                    onLoadedMetadata={() => onPlay()}
+                    audio={false}
+                    height={300}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    width={300}
+                    videoConstraints={videoConstraints}
+                    autoPlay
+                    className="rounded-full"
+                  />
+                  {/* 人脸信息获取框 */}
+                  <canvas
+                    ref={canvas}
+                    width={300}
+                    height={300}
+                    className="absolute"
+                  />
+                </Spin>
               </ModalBody>
 
               <ModalFooter>
