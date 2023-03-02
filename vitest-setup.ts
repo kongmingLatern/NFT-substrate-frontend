@@ -1,4 +1,4 @@
-import { vi, expect, afterEach } from 'vitest'
+import { expect, afterEach } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import matchers, {
   TestingLibraryMatchers,
