@@ -16,6 +16,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Spinner,
 } from '@chakra-ui/react'
 import Space from '@/component/common/Space'
 import Img from '@/assets/gd1.png'
@@ -169,7 +170,19 @@ export default function Login({
               <ModalHeader>人脸识别</ModalHeader>
               <ModalCloseButton />
               <ModalBody className="relative flex h-[300px] justify-center">
-                <Spin loading={loading}>
+                <Spin
+                  loading={loading}
+                  size={'middle'}
+                  render={() => (
+                    <Spinner
+                      thickness="4px"
+                      speed="0.65s"
+                      emptyColor="gray.200"
+                      color="blue.500"
+                      size="xl"
+                    />
+                  )}
+                >
                   <Webcam
                     onLoadedMetadata={() => onPlay()}
                     audio={false}
