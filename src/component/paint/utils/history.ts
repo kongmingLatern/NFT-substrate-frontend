@@ -2,12 +2,16 @@ import { ELEMENT_INSTANCE } from '../types'
 import { cloneDeep } from 'lodash'
 import { at, compareVersion } from './common'
 import { CANVAS_ELE_TYPE } from './constants'
-import { updateRect, FreeDraw, initRect } from './element/freeDraw'
+import {
+  updateRect,
+  FreeDraw,
+  initRect,
+} from './element/freeDraw'
 import { HistoryState } from './paintBoard'
 
 export enum EACH_ORDER_TYPE {
   FIRST = 'first', // 顺序
-  LAST = 'last' // 倒序
+  LAST = 'last', // 倒序
 }
 
 /**
@@ -26,7 +30,10 @@ export class History<T> {
    * @param cb 遍历执行回调
    * @param order 倒叙 | 正序
    */
-  each(cb?: (ele: T, i: number) => void, order = EACH_ORDER_TYPE.FIRST) {
+  each(
+    cb?: (ele: T, i: number) => void,
+    order = EACH_ORDER_TYPE.FIRST
+  ) {
     const cur = this.getCurrentStack()
 
     if (cur) {
@@ -60,7 +67,9 @@ export class History<T> {
     }
 
     const last = at(this.cacheStack)
-    const newData = last ? [...cloneDeep(last), data] : [data]
+    const newData = last
+      ? [...cloneDeep(last), data]
+      : [data]
     this.cacheStack.push(newData)
     this.step = this.cacheStack.length - 1
   }
@@ -76,8 +85,8 @@ export class History<T> {
     }
     const last = cloneDeep(at(this.cacheStack)) as T[]
     const newData =
-      last?.filter((item) => {
-        if (item && Object.hasOwn(item, key)) {
+      last?.filter((item: any) => {
+        if (item) {
           return item[key] !== value
         }
         return false
@@ -132,7 +141,10 @@ export class History<T> {
    * 获取当前层
    */
   getCurrentStack() {
-    return at(this.cacheStack, this.step < 0 ? 0 : this.step) as T[]
+    return at(
+      this.cacheStack,
+      this.step < 0 ? 0 : this.step
+    ) as T[]
   }
 
   /**
@@ -147,7 +159,8 @@ export class History<T> {
     }
     this.cacheStack.push(cloneDeep(newData))
     if (replaceData) {
-      this.cacheStack[this.cacheStack.length - 2] = cloneDeep(replaceData)
+      this.cacheStack[this.cacheStack.length - 2] =
+        cloneDeep(replaceData)
     }
     this.step = this.cacheStack.length - 1
     return this.cacheStack
@@ -164,11 +177,13 @@ export const formatHistory = (
   version: string
 ) => {
   if (state?.currentLineColor) {
-    state.currentLineColor = Array.isArray(state?.currentLineColor)
+    state.currentLineColor = Array.isArray(
+      state?.currentLineColor
+    )
       ? state.currentLineColor
       : [state.currentLineColor]
   }
-  stack.forEach((ele) => {
+  stack.forEach(ele => {
     if (compareVersion(version, '0.2.0') < 0) {
       // 兼容类型，类型已修改
       if (ele.type === 'freeLine') {
@@ -180,7 +195,7 @@ export const formatHistory = (
       // 增加选择模式，兼容矩形数据
       if (ele.type === CANVAS_ELE_TYPE.FREE_DRAW) {
         initRect(<FreeDraw>ele)
-        ;(<FreeDraw>ele).positions.forEach((position) => {
+        ;(<FreeDraw>ele).positions.forEach(position => {
           updateRect(<FreeDraw>ele, position)
         })
       }
@@ -190,7 +205,9 @@ export const formatHistory = (
       // 画笔增加多色属性
       if (ele.type === CANVAS_ELE_TYPE.FREE_DRAW) {
         if (Reflect.has(ele, 'color')) {
-          Reflect.set(ele, 'colors', [Reflect.get(ele, 'color')])
+          Reflect.set(ele, 'colors', [
+            Reflect.get(ele, 'color'),
+          ])
           Reflect.deleteProperty(ele, 'color')
         }
       }
