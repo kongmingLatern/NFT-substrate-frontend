@@ -8,8 +8,34 @@ import {
   Table,
 } from '@chakra-ui/react'
 import Space from '../common/Space'
+import Modalalert from '../common/Modalalert'
 
-export default function AdminTable() {
+interface columsType{
+  title:string,
+  id:string,
+  key:string
+}
+interface dataSourceType{
+  id:string,
+  username:string,
+  balance:string,
+  key:string
+}
+
+interface TypeProps{
+  lookuphand:(dataSourceType)=>void,
+  dataSource:Array<dataSourceType>,
+  colums:Array<columsType>
+  deleteData:(id:string)=>void
+}
+
+export default function AdminTable({
+  lookuphand,
+  dataSource,
+  colums,
+  deleteData
+
+}:TypeProps) {
   return (
     <>
       <TableContainer className="border">
@@ -20,58 +46,41 @@ export default function AdminTable() {
         >
           <Thead>
             <Tr>
-              <Th>id</Th>
+              {/* <Th>id</Th>
               <Th>用户名</Th>
               <Th isNumeric>账号余额（￥）</Th>
-              <Th>操作</Th>
+              <Th>操作</Th> */}
+              {
+                colums.map((item)=>{
+                  if (item.key==="balance") {
+                    return <Th isNumeric key={item.key}>{item.title}</Th>
+                  }else{
+                    return <Th  key={item.key}>{item.title}</Th>
+                  } 
+                })
+              }
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td isNumeric>25.4</Td>
-              <Td className="flex">
-                <Space>
-                  <button className="btn btn-secondary w-[100px] font-thin text-white">
-                    查看
-                  </button>
-                  <button className="btn btn-error w-[100px] font-thin text-white">
-                    删除
-                  </button>
-                </Space>
+             {
+              dataSource.map((item)=>{
+                return(
+                  <Tr key={item.key}>
+                    <Td>{item.id}</Td>
+                    <Td>{item.username}</Td>
+                    <Td isNumeric>{item.balance}</Td>
+                    <Td className="flex">
+                    <Space>
+                      <button onClick={()=>lookuphand(item)} className="btn btn-secondary w-[100px] font-thin text-white">
+                        查看
+                      </button>
+                      <Modalalert  deleteId={item.id} deleteData={deleteData} />
+                    </Space>
               </Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td isNumeric>30.48</Td>
-              <Td className="flex">
-                <Space>
-                  <button className="btn btn-secondary w-[100px] font-thin text-white">
-                    查看
-                  </button>
-                  <button className="btn btn-error w-[100px] font-thin text-white">
-                    删除
-                  </button>
-                </Space>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td isNumeric>0.91444</Td>
-              <Td className="flex">
-                <Space>
-                  <button className="btn btn-secondary w-[100px] font-thin text-white">
-                    查看
-                  </button>
-                  <button className="btn btn-error w-[100px] font-thin text-white">
-                    删除
-                  </button>
-                </Space>
-              </Td>
-            </Tr>
+                  </Tr>
+                )
+              })
+             }
           </Tbody>
         </Table>
       </TableContainer>
