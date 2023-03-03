@@ -23,14 +23,14 @@ interface dataSourceType {
 }
 
 interface TypeProps {
-  lookuphand: (dataSourceType) => void
   dataSource: Array<dataSourceType>
   columns: Array<columnsType>
   onDelete: (id: string) => void
+  onLookUp: (dataSourceType) => void
 }
 
 export default function AdminTable({
-  lookuphand,
+  onLookUp,
   dataSource,
   columns,
   onDelete,
@@ -70,7 +70,7 @@ export default function AdminTable({
                   <Td className="flex">
                     <Space>
                       <button
-                        onClick={() => lookuphand(item)}
+                        onClick={() => onLookUp(item)}
                         className="btn btn-secondary w-[100px] font-thin text-white"
                       >
                         查看

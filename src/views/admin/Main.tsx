@@ -62,10 +62,10 @@ export default function Main() {
         <Echarts type="bar" data={data} />
       </div>
       <AdminTable
-        onDelete={deleteItem}
-        lookuphand={lookuphand}
         dataSource={dataSource}
         columns={columns}
+        onLookUp={lookuphand}
+        onDelete={deleteItem}
       />
     </>
   )
