@@ -8,34 +8,33 @@ import {
   Table,
 } from '@chakra-ui/react'
 import Space from '../common/Space'
-import Modalalert from '../common/Modalalert'
+import Popover from '../common/Popover'
 
-interface columsType{
-  title:string,
-  id:string,
-  key:string
+interface columnsType {
+  title: string
+  id: string
+  key: string
 }
-interface dataSourceType{
-  id:string,
-  username:string,
-  balance:string,
-  key:string
+interface dataSourceType {
+  id: string
+  username: string
+  balance: string
+  key: string
 }
 
-interface TypeProps{
-  lookuphand:(dataSourceType)=>void,
-  dataSource:Array<dataSourceType>,
-  colums:Array<columsType>
-  deleteData:(id:string)=>void
+interface TypeProps {
+  lookuphand: (dataSourceType) => void
+  dataSource: Array<dataSourceType>
+  columns: Array<columnsType>
+  onDelete: (id: string) => void
 }
 
 export default function AdminTable({
   lookuphand,
   dataSource,
-  colums,
-  deleteData
-
-}:TypeProps) {
+  columns,
+  onDelete,
+}: TypeProps) {
   return (
     <>
       <TableContainer className="border">
@@ -46,41 +45,50 @@ export default function AdminTable({
         >
           <Thead>
             <Tr>
-              {/* <Th>id</Th>
-              <Th>用户名</Th>
-              <Th isNumeric>账号余额（￥）</Th>
-              <Th>操作</Th> */}
-              {
-                colums.map((item)=>{
-                  if (item.key==="balance") {
-                    return <Th isNumeric key={item.key}>{item.title}</Th>
-                  }else{
-                    return <Th  key={item.key}>{item.title}</Th>
-                  } 
-                })
-              }
+              {columns.map(item => {
+                if (item.key === 'balance') {
+                  return (
+                    <Th isNumeric key={item.key}>
+                      {item.title}
+                    </Th>
+                  )
+                } else {
+                  return (
+                    <Th key={item.key}>{item.title}</Th>
+                  )
+                }
+              })}
             </Tr>
           </Thead>
           <Tbody>
-             {
-              dataSource.map((item)=>{
-                return(
-                  <Tr key={item.key}>
-                    <Td>{item.id}</Td>
-                    <Td>{item.username}</Td>
-                    <Td isNumeric>{item.balance}</Td>
-                    <Td className="flex">
+            {dataSource.map(item => {
+              return (
+                <Tr key={item.key}>
+                  <Td>{item.id}</Td>
+                  <Td>{item.username}</Td>
+                  <Td isNumeric>{item.balance}</Td>
+                  <Td className="flex">
                     <Space>
-                      <button onClick={()=>lookuphand(item)} className="btn btn-secondary w-[100px] font-thin text-white">
+                      <button
+                        onClick={() => lookuphand(item)}
+                        className="btn btn-secondary w-[100px] font-thin text-white"
+                      >
                         查看
                       </button>
-                      <Modalalert  deleteId={item.id} deleteData={deleteData} />
+                      <Popover
+                        deleteId={item.id}
+                        onDelete={onDelete}
+                        render={() => (
+                          <button className="btn btn-error w-[100px] font-thin text-white">
+                            删除
+                          </button>
+                        )}
+                      />
                     </Space>
-              </Td>
-                  </Tr>
-                )
-              })
-             }
+                  </Td>
+                </Tr>
+              )
+            })}
           </Tbody>
         </Table>
       </TableContainer>

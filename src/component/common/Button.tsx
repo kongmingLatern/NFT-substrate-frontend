@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useEffect } from 'react'
 
-interface ButtonType {
+interface ButtonType extends React.AllHTMLAttributes<HTMLButtonElement>{
   type?: 'primary' | 'secondary'
   value?: any
   baseClass?: string
