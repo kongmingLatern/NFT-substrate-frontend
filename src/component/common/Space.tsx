@@ -1,47 +1,63 @@
-import React from 'react'
+import classNames from 'classnames'
+import React, { Fragment } from 'react'
 
 interface SpaceType {
   size?: number | 'small' | 'medium' | 'large'
   direction?: 'horizontal' | 'vertical'
   children?: React.ReactNode
+  className?: string
 }
 
 export default function Space({
   size = 20,
   direction = 'horizontal',
   children,
+  className,
 }: SpaceType) {
   function getStyle() {
     const defaultStyle = {
       marginBottom:
-        direction === 'vertical' ? size + 'px' : '0',
+        direction === 'vertical' ? size + 'px ' : '0 ',
       marginRight:
-        direction === 'horizontal' ? size + 'px' : '0',
+        direction === 'horizontal' ? size + 'px ' : '0 ',
     }
+    // return classNames(
+    //   JSON.stringify(defaultStyle),
+    //   className
+    // )
     return {
       ...defaultStyle,
+      className,
     }
   }
 
   return (
     <>
-      {}
-      {React.Children.toArray(children).map(
-        (child, index) => {
-          return (
-            <div
-              key={index}
-              style={
-                index !== React.Children.count(children) - 1
-                  ? getStyle()
-                  : {}
-              }
-            >
-              {child}
-            </div>
-          )
-        }
-      )}
+      <div
+        className={classNames(
+          'flex',
+          direction === 'vertical' ? 'flex-col' : ''
+        )}
+      >
+        {React.Children.toArray(children).map(
+          (child, index) => {
+            return (
+              <Fragment key={index}>
+                {React.cloneElement(
+                  child as React.ReactElement,
+                  {
+                    style:
+                      index !==
+                      React.Children.count(children) - 1
+                        ? getStyle()
+                        : {},
+                  }
+                )}
+              </Fragment>
+            )
+          }
+        )}
+      </div>
     </>
   )
 }
