@@ -51,6 +51,7 @@ export default function Login({
     if (!isFaceDetectionModelLoaded()) {
       setLoading(false)
       await loadModels(getCurrentFaceDetectionNet)
+      // 模型加载完毕
     } else if (
       webcamRef.current.video.paused ||
       webcamRef.current.video.ended

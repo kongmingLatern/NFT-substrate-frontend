@@ -9,17 +9,15 @@ import {
 } from '@chakra-ui/react'
 import Space from '../common/Space'
 import Popover from '../common/Popover'
+import { getColumnIndexByKey } from '../../utils'
+import { columnsType } from '@/views/admin/Main'
 
-interface columnsType {
-  title: string
-  id: string
-  key: string
-}
 interface dataSourceType {
   id: string
+  key?: string
   username: string
   balance: string
-  key: string
+  operation: string
 }
 
 interface TypeProps {
@@ -64,28 +62,77 @@ export default function AdminTable({
             {dataSource.map(item => {
               return (
                 <Tr key={item.key}>
-                  <Td>{item.id}</Td>
-                  <Td>{item.username}</Td>
-                  <Td isNumeric>{item.balance}</Td>
-                  <Td className="flex">
-                    <Space>
-                      <button
-                        onClick={() => onLookUp(item)}
-                        className="btn btn-secondary w-[100px] font-thin text-white"
-                      >
-                        查看
-                      </button>
-                      <Popover
-                        deleteId={item.id}
-                        onDelete={onDelete}
-                        render={() => (
-                          <button className="btn btn-error w-[100px] font-thin text-white">
-                            删除
+                  <>
+                    {Object.keys(item).map((key, index) => {
+                      return (
+                        <>
+                          {key !== 'key' && (
+                            <>
+                              {/* {key === 'operation' ? (
+                                <Td className="flex">
+                                  {columns[
+                                    getColumnIndexByKey(
+                                      columns,
+                                      'operation'
+                                    )
+                                  ]?.render
+                                    ? columns[
+                                        getColumnIndexByKey(
+                                          columns,
+                                          'operation'
+                                        )
+                                      ].render(
+                                        item.key,
+                                        item
+                                      )
+                                    : item.key}
+                                </Td>
+                              ) : ( */}
+                                <Td>
+                                  {columns[
+                                    getColumnIndexByKey(
+                                      columns,
+                                      key
+                                    )
+                                  ]?.render
+                                    ? columns[
+                                        getColumnIndexByKey(
+                                          columns,
+                                          key
+                                        )
+                                      ].render(
+                                        item.key,
+                                        item
+                                      )
+                                    : item.key}
+                                </Td>
+                              {/* )} */}
+                            </>
+                          )}
+                        </>
+                      )
+                    })}
+
+                    {/* <Td className="flex">
+                        <Space>
+                          <button
+                            onClick={() => onLookUp(item)}
+                            className="btn btn-secondary w-[100px] font-thin text-white"
+                          >
+                            查看
                           </button>
-                        )}
-                      />
-                    </Space>
-                  </Td>
+                          <Popover
+                            deleteId={item.id}
+                            onDelete={onDelete}
+                            render={() => (
+                              <button className="btn btn-error w-[100px] font-thin text-white">
+                                删除
+                              </button>
+                            )}
+                          />
+                        </Space>
+                      </Td> */}
+                  </>
                 </Tr>
               )
             })}
