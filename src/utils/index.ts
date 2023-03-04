@@ -1,3 +1,5 @@
+import { columnsType } from '@/views/admin/Main'
+
 export function combineDate(month: number, day: number) {
   const result = []
   for (let i = 0; i < 7; i++) {
@@ -30,4 +32,17 @@ export function getCurrentDate() {
     ':' +
     minutes
   return todaytime
+}
+
+export function getColumnIndexByKey(
+  columns: columnsType[],
+  key: string
+) {
+  let index = -1
+  columns.forEach((item, i) => {
+    if (item.key === key) {
+      index = i
+    }
+  })
+  return index
 }
