@@ -54,6 +54,7 @@ describe('getColumnIndexByKey', () => {
         username: `${i}`,
         balance: `${i + 10}`,
         key: `${i}`,
+        operation: `${i}`,
       })
     }
 
