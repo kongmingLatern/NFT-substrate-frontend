@@ -7,6 +7,14 @@
 - [x] 人脸识别（引入了 `face-api.js`）
 - [x] 杂七杂八的页面（引入了 `Chakra UI`等组件）
 
+## 自行封装的组件
+
+- [x] Button
+- [x] Input
+- [x] Popover
+- [x] Space
+- [x] Table
+
 ## 前端技术架构
 
 - TypeScript
