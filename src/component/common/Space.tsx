@@ -21,10 +21,7 @@ export default function Space({
       marginRight:
         direction === 'horizontal' ? size + 'px ' : '0 ',
     }
-    // return classNames(
-    //   JSON.stringify(defaultStyle),
-    //   className
-    // )
+
     return {
       ...defaultStyle,
       className,

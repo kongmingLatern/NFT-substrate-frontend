@@ -43,7 +43,7 @@ describe('getColumnIndexByKey', () => {
       {
         title: '操作',
         id: 'operation',
-        key: 'opertion',
+        key: 'operation',
       },
     ]
     const dataSource: Array<dataSourceType> = []
